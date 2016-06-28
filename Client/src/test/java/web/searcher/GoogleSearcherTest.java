@@ -10,7 +10,7 @@ public class GoogleSearcherTest {
     public void search() {
         final int pages = 5;
         //TODO: Make a local page to test a search consistently.
-        String expected = "https://www.cjhello.com/";
+        String expected = "http://www.hellomagazine.com/";
         GoogleSearcher searcher = new GoogleSearcher();
         List<List<String>> searched = searcher.search(new Query("Hello"), pages);
         assertEquals(expected, searched.get(0).get(0));

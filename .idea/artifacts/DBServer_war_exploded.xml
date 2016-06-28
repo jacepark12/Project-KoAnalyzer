@@ -1,0 +1,38 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="DBServer:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/DBServer_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="DBServer" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: com.sun.jersey:jersey-server:1.9" />
+          <element id="library" level="project" name="Maven: asm:asm:3.1" />
+          <element id="library" level="project" name="Maven: com.sun.jersey:jersey-core:1.9" />
+          <element id="library" level="project" name="Maven: com.sun.jersey:jersey-grizzly2:1.9.1" />
+          <element id="library" level="project" name="Maven: org.glassfish.grizzly:grizzly-http:2.1.2" />
+          <element id="library" level="project" name="Maven: org.glassfish.grizzly:grizzly-framework:2.1.2" />
+          <element id="library" level="project" name="Maven: org.glassfish.gmbal:gmbal-api-only:3.0.0-b023" />
+          <element id="library" level="project" name="Maven: org.glassfish.external:management-api:3.0.0-b012" />
+          <element id="library" level="project" name="Maven: org.glassfish.grizzly:grizzly-http-server:2.1.2" />
+          <element id="library" level="project" name="Maven: org.glassfish.grizzly:grizzly-rcm:2.1.2" />
+          <element id="library" level="project" name="Maven: org.glassfish.grizzly:grizzly-http-servlet:2.1.2" />
+          <element id="library" level="project" name="Maven: com.sun.jersey:jersey-json:1.9" />
+          <element id="library" level="project" name="Maven: org.codehaus.jettison:jettison:1.1" />
+          <element id="library" level="project" name="Maven: stax:stax-api:1.0.1" />
+          <element id="library" level="project" name="Maven: com.sun.xml.bind:jaxb-impl:2.2.3-1" />
+          <element id="library" level="project" name="Maven: javax.xml.bind:jaxb-api:2.2.2" />
+          <element id="library" level="project" name="Maven: javax.xml.stream:stax-api:1.0-2" />
+          <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
+          <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-core-asl:1.8.3" />
+          <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-mapper-asl:1.8.3" />
+          <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-jaxrs:1.8.3" />
+          <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-xc:1.8.3" />
+          <element id="library" level="project" name="Maven: org.mongodb:mongo-java-driver:2.10.1" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="DBServer/web/Web" />
+    </root>
+  </artifact>
+</component>

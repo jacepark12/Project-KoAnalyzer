@@ -29,10 +29,9 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Client" target="1.5" />
+      <module name="Client" target="1.8" />
       <module name="DBServer" target="1.8" />
       <module name="Kopinion-TestModule" target="1.8" />
-      <module name="Kopinion-TestModule (1)" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

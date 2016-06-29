@@ -3,6 +3,7 @@ package example;
 import web.searcher.GoogleSearcher;
 import web.searcher.Query;
 import web.Page;
+import web.searcher.Result;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -16,7 +17,7 @@ public class BaseApp {
 
         Scanner scan = new Scanner(System.in);
         String keyword = scan.nextLine();
-        List<List<String>> urls = searcher.search(new Query(keyword));
+        Result urls = searcher.search(new Query(keyword));
 
         String currentDirectory = System.getProperty("user.dir");
         String outPutFileDirectory = currentDirectory + "/Client/src/resource/out.txt";
@@ -29,7 +30,8 @@ public class BaseApp {
             return;
         }
 
-        for (String url : urls.get(0)) {
+        for (int i = 0; urls.hasNext(); i++) {
+            String url = urls.next();
             Page page = new Page(url);
             try {
                 out.write(page.mainArticle().get("content").toString());

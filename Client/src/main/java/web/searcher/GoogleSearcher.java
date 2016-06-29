@@ -13,19 +13,19 @@ import java.util.regex.Pattern;
 
 //TODO: Pages Support.
 //TODO: Limit Maximum Result
-public class GoogleSearcher {
+public class GoogleSearcher implements Searcher {
     private String baseURL = "https://www.google.com/search?q=";
     private String userAgent = "Mozilla/5.0";
 
     public GoogleSearcher() {
-        //pass
     }
 
+    @Override
     public Result search(Query query) {
         return search(query, 1);
     }
 
-    //TODO: Wrap web.searcher.search results into a class to merge two search method.
+    @Override
     public Result search(Query query, int pages) {
         List<Document> doc = getSearchPage(query, pages);
         if (doc.contains(null)) {

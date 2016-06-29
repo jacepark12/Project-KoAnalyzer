@@ -12,7 +12,9 @@ public class CachedSearcher {
     }
 
     public Result search(Query q) {
-        return cache = searcher.search(q);
+        if (cache == null)
+            cache = searcher.search(q);
+        return cache;
     }
 
     public Result cache() {

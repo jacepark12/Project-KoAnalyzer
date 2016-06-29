@@ -18,10 +18,11 @@ public class PosDiscriminator {
 
     public static boolean isSentimentWord(KoreanTokenizer.KoreanToken input){
         String pos = input.pos().toString();
-        boolean result = false;
+        boolean result = true;
 
-        if(pos.equals("Adverb") || pos.equals("Adjective")){
-            result = true;
+        //대명사 조사 등 제외
+        if(pos.equals("Josa") || pos.equals("Eomi") || pos.equals("ProperNoun")){
+            result = false;
         }
 
         return result;

@@ -1,15 +1,14 @@
 package web.searcher;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Result {
-    private ArrayList<String> result = new ArrayList<String>();
+    private List<String> result = null;
 
-    public Result(List<List<String>> searched) {
-        for (List<String> list : searched) {
-            result.addAll(list);
-        }
+    public Result(List<String> searched) {
+        result = searched;
     }
 
     public String get(int idx) {

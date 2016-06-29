@@ -16,10 +16,9 @@ public class ResultTest {
     }
 
     @Test
-    public void exist() {
-        ArrayList<List<String>> data = new ArrayList<List<String>>();
-        data.add(new ArrayList<String>());
-        data.get(0).add("1");
+    public void has() {
+        ArrayList<String> data = new ArrayList<String>();
+        data.add("1");
         Result result = new Result(data);
         Assert.assertFalse(result.has(1));
     }

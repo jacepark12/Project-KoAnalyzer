@@ -56,7 +56,7 @@ public class GoogleSearcher {
     }
 
     private Result extractURLs(List<Document> docs) {
-        List<List<String>> urls = new ArrayList<List<String>>();
+        List<String> urls = new ArrayList<String>();
         for (Document doc : docs) {
             List<String> list = new ArrayList<String>();
             Elements links = doc.body().select("h3.r > a[href]");
@@ -67,7 +67,7 @@ public class GoogleSearcher {
                     list.add(url);
                 }
             }
-            urls.add(list);
+            urls.addAll(list);
         }
 
         return new Result(urls);

@@ -55,10 +55,6 @@ public class KoreanTextExample {
         System.out.println("tokens : " + testObject.tokens());
 
         StringBuffer stringBuffer = new StringBuffer("문제");
-        try {
-            SearchCorpusData.isNegOrPos(stringBuffer);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
     }
 }

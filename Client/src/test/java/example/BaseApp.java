@@ -30,8 +30,8 @@ public class BaseApp {
             return;
         }
 
-        for (int i = 0; urls.has(i); i++) {
-            String url = urls.get(i);
+        for (int i = 0; urls.hasNext(); i++) {
+            String url = urls.next();
             Page page = new Page(url);
             try {
                 out.write(page.mainArticle().get("content").toString());

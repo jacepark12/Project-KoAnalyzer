@@ -11,7 +11,7 @@ public class CachedSearcherTest {
         String expected = "https://www.hello.com/";
         CachedSearcher cachedSearcher = new CachedSearcher(new GoogleSearcher());
         Result actual = cachedSearcher.search(new Query("Hello"));
-        Assert.assertEquals(expected, actual.get(0));
+        Assert.assertEquals(expected, actual.next());
     }
 
     @Test
@@ -20,6 +20,6 @@ public class CachedSearcherTest {
         CachedSearcher cachedSearcher = new CachedSearcher(new GoogleSearcher());
         cachedSearcher.search(new Query("Hello"));
         Result actual = cachedSearcher.cache();
-        Assert.assertEquals(expected, actual.get(0));
+        Assert.assertEquals(expected, actual.next());
     }
 }

@@ -11,6 +11,6 @@ public class GoogleSearcherTest {
         String expected = "https://www.hello.com/";
         GoogleSearcher searcher = new GoogleSearcher();
         Result actual = searcher.search(new Query("Hello"), pages);
-        Assert.assertEquals(expected, actual.get(0));
+        Assert.assertEquals(expected, actual.next());
     }
 }

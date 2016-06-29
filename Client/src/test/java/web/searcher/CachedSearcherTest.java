@@ -10,8 +10,8 @@ public class CachedSearcherTest {
     public void search() {
         String expected = "https://www.hello.com/";
         CachedSearcher cachedSearcher = new CachedSearcher(new GoogleSearcher());
-        List<List<String>> actual = cachedSearcher.search(new Query("Hello"));
-        Assert.assertEquals(expected, actual.get(0).get(0));
+        Result actual = cachedSearcher.search(new Query("Hello"));
+        Assert.assertEquals(expected, actual.get(0));
     }
 
     @Test
@@ -19,7 +19,7 @@ public class CachedSearcherTest {
         String expected = "https://www.hello.com/";
         CachedSearcher cachedSearcher = new CachedSearcher(new GoogleSearcher());
         cachedSearcher.search(new Query("Hello"));
-        List<String> actual = cachedSearcher.cache();
+        Result actual = cachedSearcher.cache();
         Assert.assertEquals(expected, actual.get(0));
     }
 }

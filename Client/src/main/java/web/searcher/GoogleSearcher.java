@@ -21,12 +21,12 @@ public class GoogleSearcher {
         //pass
     }
 
-    public List<List<String>> search(Query query) {
+    public Result search(Query query) {
         return search(query, 1);
     }
 
     //TODO: Wrap web.searcher.search results into a class to merge two search method.
-    public List<List<String>> search(Query query, int pages) {
+    public Result search(Query query, int pages) {
         List<Document> doc = getSearchPage(query, pages);
         if (doc.contains(null)) {
             return null;
@@ -55,7 +55,7 @@ public class GoogleSearcher {
         }
     }
 
-    private List<List<String>> extractURLs(List<Document> docs) {
+    private Result extractURLs(List<Document> docs) {
         List<List<String>> urls = new ArrayList<List<String>>();
         for (Document doc : docs) {
             List<String> list = new ArrayList<String>();
@@ -70,7 +70,7 @@ public class GoogleSearcher {
             urls.add(list);
         }
 
-        return urls;
+        return new Result(urls);
     }
 
     private String parseURL(String url) {

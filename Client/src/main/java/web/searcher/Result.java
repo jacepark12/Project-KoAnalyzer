@@ -15,4 +15,9 @@ public class Result {
     public String get(int idx) {
         return result.get(idx);
     }
+
+    public boolean has(int idx) {
+        if (idx < 0 || idx >= result.size()) return false;
+        return true;
+    }
 }

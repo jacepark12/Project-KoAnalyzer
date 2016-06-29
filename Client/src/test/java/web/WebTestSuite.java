@@ -10,6 +10,7 @@ import web.searcher.*;
         QueryTest.class,
         DocumentTest.class,
         PageTest.class,
+        ResultTest.class,
 })
 
 /**

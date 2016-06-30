@@ -19,4 +19,14 @@ public class TestKoreanTextTokenizer {
         assertEquals(expected, result);
     }
 
+    @Test
+    public void changeAsMultipleOfTen(){
+        int input = 27;
+
+        int result = KoreanTextTokenizer.changeAsMultipleOfTen(input);
+        int expected = 30;
+
+        assertEquals(expected, result);
+    }
+
 }

@@ -35,7 +35,7 @@ public class PageTest {
 
         Page page = new Page("http://ppss.kr/archives/84027");
         JSONObject article = page.mainArticle();
-        //TODO: Test fails if directly compare expectedJSON, aritcle instead of *.toString()
+        //Test fails if directly compare expectedJSON, aritcle instead of *.toString()
         Assert.assertEquals(expectedJSON.toString(), article.toString());
     }
 }

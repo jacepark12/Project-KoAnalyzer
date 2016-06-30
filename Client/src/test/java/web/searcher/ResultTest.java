@@ -1,6 +1,7 @@
 package web.searcher;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -8,33 +9,34 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 public class ResultTest {
+    private List<String> expected;
+
+    @Before
+    public void setUp() {
+        expected = new ArrayList<>();
+        expected.add("A");
+        expected.add("B");
+    }
+
     @Test
     public void next() {
-        List<String> data = new ArrayList<String>();
-        data.add("A");
-        data.add("B");
-
-        Result result = new Result(data);
-        Assert.assertEquals(data.get(0), result.next());
-        Assert.assertEquals(data.get(1), result.next());
+        Result result = new Result(expected);
+        Assert.assertEquals(expected.get(0), result.next());
+        Assert.assertEquals(expected.get(1), result.next());
     }
 
     @Test(expected = NoSuchElementException.class)
     public void nextException() {
-        List<String> data = new ArrayList<String>();
-        data.add("A");
-
-        Result result = new Result(data);
-        result.next();
-        result.next();
+        Result result = new Result(expected);
+        for (int i = 0; i <= expected.size(); i++) {
+            result.next();
+        }
     }
 
     @Test
     public void hasNext() {
-        List<String> data = new ArrayList<String>();
-        data.add("A");
-
-        Result result = new Result(data);
+        Result result = new Result(expected);
+        result.next();
         result.next();
 
         Assert.assertFalse(result.hasNext());

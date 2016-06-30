@@ -12,7 +12,6 @@ import java.util.Scanner;
 
 public class BaseApp {
     public static void main(String[] args) {
-        //Todo: Proper Exception Handling, or just throw exception.
         GoogleSearcher searcher = new GoogleSearcher();
 
         Scanner scan = new Scanner(System.in);
@@ -22,11 +21,11 @@ public class BaseApp {
         String currentDirectory = System.getProperty("user.dir");
         String outPutFileDirectory = currentDirectory + "/Client/src/resource/out.txt";
 
-        FileWriter out = null;
+        FileWriter out;
         try {
             out = new FileWriter(outPutFileDirectory);
         } catch(IOException e) {
-            System.out.println(e);
+            System.out.println(e.getMessage());
             return;
         }
 
@@ -36,7 +35,7 @@ public class BaseApp {
             try {
                 out.write(page.mainArticle().get("content").toString());
             } catch (Exception e) {
-                System.out.println(e);
+                System.out.println(e.getMessage());
                 break;
             }
         }
@@ -44,9 +43,7 @@ public class BaseApp {
         try {
             out.close();
         } catch (IOException e) {
-            System.out.println(e);
-            return;
+            System.out.println(e.getMessage());
         }
-
     }
 }

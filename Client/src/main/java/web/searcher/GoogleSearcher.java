@@ -11,8 +11,6 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-//TODO: Pages Support.
-//TODO: Limit Maximum Result
 public class GoogleSearcher implements Searcher {
     private String baseURL = "https://www.google.com/search?q=";
     private String userAgent = "Mozilla/5.0";
@@ -37,7 +35,7 @@ public class GoogleSearcher implements Searcher {
 
     private List<Document> getSearchPage(Query query, int pages) {
         try {
-            List<Document> docs = new ArrayList<Document>();
+            List<Document> docs = new ArrayList<>();
             for (int i = 0; i < pages; i++) {
                 int start = i*10;
                 Document doc = Jsoup
@@ -56,9 +54,9 @@ public class GoogleSearcher implements Searcher {
     }
 
     private Result extractURLs(List<Document> docs) {
-        List<String> urls = new ArrayList<String>();
+        List<String> urls = new ArrayList<>();
         for (Document doc : docs) {
-            List<String> list = new ArrayList<String>();
+            List<String> list = new ArrayList<>();
             Elements links = doc.body().select("h3.r > a[href]");
             for(Element elem : links) {
                 String url = elem.attr("href");

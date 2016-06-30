@@ -65,7 +65,7 @@ public class SearchCorpusData implements SentimentTypeInterface{
     //false : if word has negative sentiment
     //리팩토링 필요 : 긍정이 아니면 무조건 false이므로, 중립적인단어임에도 불구하고 부정으로 판별될 수 있음
     // TODO What if there is no word data in corpus?
-    public SentimentType isWordPositive(CharSequence word)throws IOException{
+    public SentimentType getWordSentimentType(CharSequence word)throws IOException{
         SentimentType result = SentimentType.NODATA;
 
         int posCount = 0;

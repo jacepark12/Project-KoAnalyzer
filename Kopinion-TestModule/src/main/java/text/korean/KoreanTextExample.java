@@ -1,10 +1,12 @@
 package text.korean;
 
+import com.twitter.penguin.korean.KoreanPosJava;
 import com.twitter.penguin.korean.TwitterKoreanProcessorJava;
 import com.twitter.penguin.korean.phrase_extractor.KoreanPhraseExtractor;
 import com.twitter.penguin.korean.tokenizer.KoreanTokenizer;
 import scala.collection.Seq;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -12,7 +14,7 @@ import java.util.List;
  */
 public class KoreanTextExample {
     public static void main(String[] args) {
-        String text = "한국어를 처리하는 예시입니닼ㅋㅋㅋㅋㅋ #한국어";
+        String text = "박근혜는 너무 나쁘다";
 
         // Normalize
         CharSequence normalized = TwitterKoreanProcessorJava.normalize(text);
@@ -40,6 +42,19 @@ public class KoreanTextExample {
         List<KoreanPhraseExtractor.KoreanPhrase> phrases = TwitterKoreanProcessorJava.extractPhrases(tokens, true, true);
         System.out.println(phrases);
         // [한국어(Noun: 0, 3), 처리(Noun: 5, 2), 처리하는 예시(Noun: 5, 7), 예시(Noun: 10, 2), #한국어(Hashtag: 18, 4)]
+
+        KoreanPhraseExtractor.KoreanPhrase testObject = phrases.get(0);
+
+        System.out.println("pos :" + testObject.pos());
+
+        if(testObject.pos().toString().equals("Noun")){
+            System.out.println("this is noun");
+        }
+
+        System.out.println("text : " + testObject.text());
+        System.out.println("tokens : " + testObject.tokens());
+
+        StringBuffer stringBuffer = new StringBuffer("문제");
 
     }
 }

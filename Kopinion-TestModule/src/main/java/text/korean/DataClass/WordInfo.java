@@ -3,11 +3,19 @@ package text.korean.DataClass;
 /**
  * Created by parkjaesung on 2016. 6. 29..
  */
-public class WordInfo {
+public class WordInfo implements SentimentTypeInterface{
 
     private StringBuffer word;
-    private boolean isPositive;
+    private SentimentType sentimentType;
     private double positionAtText;
+
+    public SentimentType getSentimentType() {
+        return sentimentType;
+    }
+
+    public void setSentimentType(SentimentType sentimentType) {
+        this.sentimentType = sentimentType;
+    }
 
     public StringBuffer getWord() {
         return word;
@@ -15,14 +23,6 @@ public class WordInfo {
 
     public void setWord(StringBuffer word) {
         this.word = word;
-    }
-
-    public boolean isPositive() {
-        return isPositive;
-    }
-
-    public void setPositive(boolean positive) {
-        isPositive = positive;
     }
 
     public double getPositionAtText() {

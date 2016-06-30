@@ -21,7 +21,7 @@ public class PosDiscriminator {
         boolean result = true;
 
         //대명사 조사 등 제외
-        if(pos.equals("Josa") || pos.equals("Eomi") || pos.equals("ProperNoun")){
+        if(pos.contains("Space")||pos.contains("Josa") || pos.contains("Eomi") || pos.contains("ProperNoun")){
             result = false;
         }
 

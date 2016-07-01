@@ -21,7 +21,8 @@ public class SearchCorpusData implements SentimentTypeInterface{
 
     //constructor
     private SearchCorpusData(){
-/*
+        /*
+        /*
         try {
             this.reader = new CSVReader(new FileReader(filePath));
         } catch (FileNotFoundException e) {
@@ -39,7 +40,7 @@ public class SearchCorpusData implements SentimentTypeInterface{
 
         SentimentType result = SentimentType.NODATA;
 
-        if (nextLine[3].matches(".*" + word + "*.") || nextLine[13].contains(word)) {
+        if (nextLine[3].contains(word)) {
 
             //  isWordDataExists = true;
             switch (nextLine[index]) {
@@ -90,7 +91,7 @@ public class SearchCorpusData implements SentimentTypeInterface{
                     }
                     break;
 
-                case "SubjTag" :
+              /*  case "SubjTag" :
                     sentimentType = getSentimentFromCol(nextLine, word, 7);
 
                     if(sentimentType.equals(SentimentType.POS)){
@@ -99,7 +100,7 @@ public class SearchCorpusData implements SentimentTypeInterface{
                         negCount++;
                     }
 
-                    break;
+                    break;*/
             }
         }
 
@@ -107,10 +108,14 @@ public class SearchCorpusData implements SentimentTypeInterface{
             result = SentimentType.POS;
         }else if(posCount < negCount){
             result = SentimentType.NEG;
-        }else{
+        }else if(posCount == 0 && negCount == 0){
+            result = SentimentType.NEUT;
+        }
+        else{
             result = SentimentType.NODATA;
         }
 
+        System.out.println(word+ " 의 posCount :" + posCount + " & negCount : " + negCount);
         return result;
 
     }

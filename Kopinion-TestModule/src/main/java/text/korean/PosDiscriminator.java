@@ -21,7 +21,7 @@ public class PosDiscriminator {
         boolean result = true;
 
         //대명사 조사 등 제외
-        if(pos.contains("Space")||pos.contains("Josa") || pos.contains("Eomi") || pos.contains("ProperNoun")){
+        if(input.text().length()==1 || pos.contains("Number")||pos.contains("Punctuation")||pos.contains("Alpha")||pos.contains("Space")||pos.contains("Josa") || pos.contains("Eomi") || pos.contains("ProperNoun")){
             result = false;
         }
 

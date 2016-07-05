@@ -4,9 +4,7 @@ import com.twitter.penguin.korean.TwitterKoreanProcessorJava;
 import com.twitter.penguin.korean.tokenizer.KoreanTokenizer;
 import scala.collection.Seq;
 import scala.collection.convert.WrapAsJava$;
-import text.korean.DataClass.SentimentTypeInterface;
-import text.korean.DataClass.WordInfo;
-import text.korean.DataClass.WordInfoManager;
+import text.korean.DataClass.*;
 import text.korean.fileio.WordInfoCSVWriter;
 
 import java.io.IOException;
@@ -53,6 +51,7 @@ public class KoreanTextTokenizer implements SentimentTypeInterface{
 
         WordInfoCSVWriter wordInfoCSVWriter = WordInfoCSVWriter.getInstance();
         WordInfoManager wordInfoManager = WordInfoManager.getInstance();
+        WordDistributionManager wordDistributionManager = WordDistributionManager.getInstance();
 
         //특정 문자 제거
         text= KoreanTextTokenizer.removeSpecialChar(text);
@@ -86,12 +85,30 @@ public class KoreanTextTokenizer implements SentimentTypeInterface{
                     e.printStackTrace();
                 }
 
+                if(wordDistributionManager.isDisributionInfoExists(text.toString())){
+                    System.out.println("WordDistribution exists!");
+                    //WordDistribution 객체를 가져온 후, wordDistributionManager 객체에 저장
+                    WordDistribution wordDistribution = wordDistributionManager.getWordDistributionClass(text.toString());
+                    wordDistribution.addDataToPositionArrayList(textIndex);
+
+                    wordDistributionManager.updateWordDistribution(wordDistribution);
+                }else{
+                    System.out.println("WordDistribution don't exists!");
+                    //WordDistribution 객체 생성 후 wordDistirbutionManager 객체에 저장
+                    WordDistribution wordDistribution = new WordDistribution();
+
+                    wordDistribution.setWord(text.toString());
+                    wordDistribution.addDataToPositionArrayList(textIndex);
+
+                    wordDistributionManager.updateWordDistribution(wordDistribution);
+                }
+
                 //%를 구한뒤 1의 자리에서 반올림
                 wordInfo.setPositionAtText(changeAsMultipleOfTen(getPercentageOfPosition(textIndex, textLength)));
                 textIndex += text.length();
 
                 wordInfoManager.addWordInfoToArrayList(wordInfo);
-            }else{//save
+            }else{//save wordInfo as Neutral Word
 
                 WordInfo wordInfo = new WordInfo();
 
@@ -107,7 +124,11 @@ public class KoreanTextTokenizer implements SentimentTypeInterface{
 
         System.out.println("Finished Searching data");
 
-        wordInfoManager.printWordInfo(wordInfoManager.getWordInfoArrayList());
+        //단어, 감성 정보 출력
+        //wordInfoManager.printWordInfo(wordInfoManager.getWordInfoArrayList());
+
+        //각 단어별 분산도 출력
+        wordDistributionManager.printDistributionInfo();
 
         //write csv
         wordInfoCSVWriter.exportWordInfoToCVS(wordInfoManager.getWordInfoArrayList());

@@ -8,9 +8,15 @@ import java.util.ArrayList;
 public class WordDistribution {
 
     private String word;
+    //Variable positionAvg's value is only est by private method calculateDistribution
     private double positionAvg;
-    private ArrayList positionArrayList = new ArrayList();
-    private double distribute;
+    private ArrayList<Double> positionArrayList = new ArrayList();
+    //Variable distribution's value is only est by private method calculateDistribution
+    private double distribution;
+
+    public void addDataToPositionArrayList(double input){
+        positionArrayList.add(input);
+    }
 
     public String getWord() {
         return word;
@@ -24,23 +30,29 @@ public class WordDistribution {
         return positionAvg;
     }
 
-    public void setPositionAvg(double positionAvg) {
-        this.positionAvg = positionAvg;
-    }
-
     public ArrayList getPositionArrayList() {
         return positionArrayList;
     }
 
-    public void setPositionArrayList(ArrayList positionArrayList) {
-        this.positionArrayList = positionArrayList;
+    public double getDistribution() {
+        return distribution;
     }
 
-    public double getDistribute() {
-        return distribute;
-    }
+    public void calculateDistribution(){
 
-    public void setDistribute(double distribute) {
-        this.distribute = distribute;
+        //Get Average
+        double sum = 0;
+        for (Double position : this.positionArrayList) {
+            sum+=position;
+        }
+        this.positionAvg = sum / this.positionArrayList.size()+1;
+
+        //Calculate Distribution
+        double distributionSum = 0;
+        for (Double position : this.positionArrayList) {
+            distributionSum += Math.pow(this.positionAvg - position,2);
+        }
+
+        this.distribution = distributionSum / this.positionArrayList.size()+1;
     }
 }

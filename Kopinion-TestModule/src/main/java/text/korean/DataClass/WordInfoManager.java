@@ -8,7 +8,7 @@ import java.util.ArrayList;
 //Singleton Pattern
 public class WordInfoManager {
 
-    public static ArrayList<WordInfo> wordInfoArrayList = new ArrayList<>();
+    private ArrayList<WordInfo> wordInfoArrayList = new ArrayList<>();
     private static WordInfoManager instance = new WordInfoManager();
 
     //Constructor
@@ -17,12 +17,16 @@ public class WordInfoManager {
     }
 
     //Getter & Setter
-    public static ArrayList<WordInfo> getWordInfoArrayList() {
+    public ArrayList<WordInfo> getWordInfoArrayList() {
         return wordInfoArrayList;
     }
 
-    public static void setWordInfoArrayList(ArrayList<WordInfo> wordInfoArrayList) {
-        WordInfoManager.wordInfoArrayList = wordInfoArrayList;
+    public void setWordInfoArrayList(ArrayList<WordInfo> wordInfoArrayList) {
+        this.wordInfoArrayList = wordInfoArrayList;
+    }
+
+    public void addWordInfoToArrayList(WordInfo wordInfo){
+        this.wordInfoArrayList.add(wordInfo);
     }
 
     public static void printWordInfo(ArrayList<WordInfo> wordInfoArrayList){

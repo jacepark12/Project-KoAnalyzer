@@ -7,7 +7,7 @@ public class WordInfo implements SentimentTypeInterface{
 
     private StringBuffer word;
     private SentimentType sentimentType;
-    private double positionAtText;
+    private int positionAtText; //save as percentage by multiples of 10
 
     public SentimentType getSentimentType() {
         return sentimentType;
@@ -25,11 +25,11 @@ public class WordInfo implements SentimentTypeInterface{
         this.word = word;
     }
 
-    public double getPositionAtText() {
+    public int getPositionAtText() {
         return positionAtText;
     }
 
-    public void setPositionAtText(double positionAtText) {
+    public void setPositionAtText(int positionAtText) {
         this.positionAtText = positionAtText;
     }
 }

@@ -9,11 +9,6 @@ import java.util.HashMap;
  */
 public class WordDensityManager {
 
-    private static WordDensityManager instance = new WordDensityManager();
-    public static WordDensityManager getInstance(){
-        return instance;
-    }
-
     //String key == WordDistibution memeber variable word
     private HashMap<String, WordDensity> densityHashMap = new HashMap<>();
 

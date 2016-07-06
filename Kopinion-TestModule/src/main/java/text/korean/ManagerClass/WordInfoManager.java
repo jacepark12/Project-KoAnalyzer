@@ -7,14 +7,14 @@ import java.util.ArrayList;
 /**
  * Created by parkjaesung on 2016. 6. 29..
  */
+
 //Singleton Pattern
 public class WordInfoManager {
 
     private ArrayList<WordInfo> wordInfoArrayList = new ArrayList<>();
-    private static WordInfoManager instance = new WordInfoManager();
 
     //Constructor
-    private WordInfoManager(){
+    public WordInfoManager(){
 
     }
 
@@ -38,10 +38,6 @@ public class WordInfoManager {
             System.out.println("감성 타입 : " + wordInfo.getSentimentType().name());
             System.out.println("글 내에서의 위치 : " + wordInfo.getPositionAtText() + "%");
         }
-    }
-
-    public static WordInfoManager getInstance(){
-        return instance;
     }
 
 }

@@ -5,6 +5,8 @@ import com.twitter.penguin.korean.tokenizer.KoreanTokenizer;
 import scala.collection.Seq;
 import scala.collection.convert.WrapAsJava$;
 import text.korean.DataClass.*;
+import text.korean.managerclass.WordDensityManager;
+import text.korean.managerclass.WordInfoManager;
 import text.korean.fileio.WordInfoCSVWriter;
 
 import java.io.IOException;
@@ -51,7 +53,7 @@ public class KoreanTextTokenizer implements SentimentTypeInterface{
 
         WordInfoCSVWriter wordInfoCSVWriter = WordInfoCSVWriter.getInstance();
         WordInfoManager wordInfoManager = WordInfoManager.getInstance();
-        WordDistributionManager wordDistributionManager = WordDistributionManager.getInstance();
+        WordDensityManager wordDensityManager = WordDensityManager.getInstance();
 
         //특정 문자 제거
         text= KoreanTextTokenizer.removeSpecialChar(text);
@@ -85,22 +87,22 @@ public class KoreanTextTokenizer implements SentimentTypeInterface{
                     e.printStackTrace();
                 }
 
-                if(wordDistributionManager.isDisributionInfoExists(text.toString())){
-                    System.out.println("WordDistribution exists!");
-                    //WordDistribution 객체를 가져온 후, wordDistributionManager 객체에 저장
-                    WordDistribution wordDistribution = wordDistributionManager.getWordDistributionClass(text.toString());
-                    wordDistribution.addDataToPositionArrayList(textIndex);
+                if(wordDensityManager.isDensityInfoExists(text.toString())){
+                    System.out.println("WordDensity exists!");
+                    //WordDensity 객체를 가져온 후, wordDensityManager 객체에 저장
+                    WordDensity wordDensity = wordDensityManager.getWordDensityClass(text.toString());
+                    wordDensity.addDataToPositionArrayList(textIndex);
 
-                    wordDistributionManager.updateWordDistribution(wordDistribution);
+                    wordDensityManager.updateWordDensity(wordDensity);
                 }else{
-                    System.out.println("WordDistribution don't exists!");
-                    //WordDistribution 객체 생성 후 wordDistirbutionManager 객체에 저장
-                    WordDistribution wordDistribution = new WordDistribution();
+                    System.out.println("WordDensity don't exists!");
+                    //WordDensity 객체 생성 후 wordDistirbutionManager 객체에 저장
+                    WordDensity wordDensity = new WordDensity();
 
-                    wordDistribution.setWord(text.toString());
-                    wordDistribution.addDataToPositionArrayList(textIndex);
+                    wordDensity.setWord(text.toString());
+                    wordDensity.addDataToPositionArrayList(textIndex);
 
-                    wordDistributionManager.updateWordDistribution(wordDistribution);
+                    wordDensityManager.updateWordDensity(wordDensity);
                 }
 
                 //%를 구한뒤 1의 자리에서 반올림
@@ -128,7 +130,7 @@ public class KoreanTextTokenizer implements SentimentTypeInterface{
         //wordInfoManager.printWordInfo(wordInfoManager.getWordInfoArrayList());
 
         //각 단어별 분산도 출력
-        wordDistributionManager.printDistributionInfo();
+        wordDensityManager.printDensityInfo();
 
         //write csv
         wordInfoCSVWriter.exportWordInfoToCVS(wordInfoManager.getWordInfoArrayList());

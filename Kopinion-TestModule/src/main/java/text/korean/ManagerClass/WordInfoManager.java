@@ -1,4 +1,6 @@
-package text.korean.DataClass;
+package text.korean.managerclass;
+
+import text.korean.DataClass.WordInfo;
 
 import java.util.ArrayList;
 
@@ -29,7 +31,7 @@ public class WordInfoManager {
         this.wordInfoArrayList.add(wordInfo);
     }
 
-    public static void printWordInfo(ArrayList<WordInfo> wordInfoArrayList){
+    public void printWordInfo(ArrayList<WordInfo> wordInfoArrayList){
 
         for (WordInfo wordInfo: wordInfoArrayList) {
             System.out.println("단어 : " + wordInfo.getWord());

@@ -31,19 +31,6 @@ public class KoreanTextTokenizer implements SentimentTypeInterface{
             "\n" +
             "이 전 수석은 “당시에 한명의 생명이라도 더 구해야 한다는 절박함에서 선 수습하고 나중에 비판하라는 취지였다”고 해명했다. 하지만 4월30일 통화 녹취록에는 이 전 수석이 “하필이면 또 세상에 (대통령이) KBS를 봤네”라며 해경을 비판하는 아이템의 교체를 요구하는 부분이 나온다. 이 전 수석의 의도가 신속한 구조보다 대통령의 불편한 심기를 염두에 둔 것임을 어렵지 않게 짐작하게 하는 대목이다.\n";
 
-    //private static String text ="박근혜의 살인";
-   private static int textLength;
-
-    private static Seq<KoreanTokenizer.KoreanToken> getKoreanTokensFromText(SearchCorpusData searchCorpusData, String text){
-        // Normalize
-        CharSequence normalized = TwitterKoreanProcessorJava.normalize(text);
-        System.out.println(normalized);
-
-        Seq<KoreanTokenizer.KoreanToken> tokens = TwitterKoreanProcessorJava.tokenize(normalized);
-
-        return tokens;
-    }
-
     /**
      * Main.
      *
@@ -51,117 +38,13 @@ public class KoreanTextTokenizer implements SentimentTypeInterface{
      */
     public static void main(String[] args){
 
-        WordInfoCSVWriter wordInfoCSVWriter = WordInfoCSVWriter.getInstance();
-        WordInfoManager wordInfoManager = WordInfoManager.getInstance();
-        WordDensityManager wordDensityManager = WordDensityManager.getInstance();
+        TextData textData = new TextData();
 
-        //특정 문자 제거
-        text= KoreanTextTokenizer.removeSpecialChar(text);
-        textLength = text.length();
-
-        //SearchCorpusData object for searching word in corpus data
-        SearchCorpusData searchCorpusData = SearchCorpusData.getInstance();
-
-        Seq<KoreanTokenizer.KoreanToken> tokens = getKoreanTokensFromText(searchCorpusData, text);
-
-        System.out.println(TwitterKoreanProcessorJava.tokensToJavaStringList(tokens));
-        // [한국어, 를, 처리, 하는, 예시, 입니, 다, ㅋㅋ, #한국어]
-        System.out.println(TwitterKoreanProcessorJava.tokensToJavaKoreanTokenList(tokens));
-        // [한국어(Noun: 0, 3), 를(Josa: 3, 1),  (Space: 4, 1), 처리(Noun: 5, 2), 하는(Verb: 7, 2),  (Space: 9, 1), 예시(Noun: 10, 2), 입니(Adjective: 12, 2), 다(Eomi: 14, 1), ㅋㅋ(KoreanParticle: 15, 2),  (Space: 17, 1), #한국어(Hashtag: 18, 4)]
-
-        int textIndex = 1;
-
-        List textTokens = convertToList(tokens);
-        for (Object textToken: textTokens) {
-
-            KoreanTokenizer.KoreanToken token = (KoreanTokenizer.KoreanToken)textToken;
-            if(PosDiscriminator.isSentimentWord(token)){
-                WordInfo wordInfo = new WordInfo();
-
-                StringBuffer text = new StringBuffer().append(token.text());
-                wordInfo.setWord(text);
-
-                try {
-                    wordInfo.setSentimentType(searchCorpusData.getWordSentimentType(text));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                if(wordDensityManager.isDensityInfoExists(text.toString())){
-                    System.out.println("WordDensity exists!");
-                    //WordDensity 객체를 가져온 후, wordDensityManager 객체에 저장
-                    WordDensity wordDensity = wordDensityManager.getWordDensityClass(text.toString());
-                    wordDensity.addDataToPositionArrayList(textIndex);
-
-                    wordDensityManager.updateWordDensity(wordDensity);
-                }else{
-                    System.out.println("WordDensity don't exists!");
-                    //WordDensity 객체 생성 후 wordDistirbutionManager 객체에 저장
-                    WordDensity wordDensity = new WordDensity();
-
-                    wordDensity.setWord(text.toString());
-                    wordDensity.addDataToPositionArrayList(textIndex);
-
-                    wordDensityManager.updateWordDensity(wordDensity);
-                }
-
-                //%를 구한뒤 1의 자리에서 반올림
-                wordInfo.setPositionAtText(changeAsMultipleOfTen(getPercentageOfPosition(textIndex, textLength)));
-                textIndex += text.length();
-
-                wordInfoManager.addWordInfoToArrayList(wordInfo);
-            }else{//save wordInfo as Neutral Word
-
-                WordInfo wordInfo = new WordInfo();
-
-                StringBuffer text = new StringBuffer().append(token.text());
-                wordInfo.setWord(text);
-                wordInfo.setSentimentType(SentimentType.NEUT);
-                wordInfo.setPositionAtText(changeAsMultipleOfTen(getPercentageOfPosition(textIndex, textLength)));
-                textIndex += text.length();
-
-                wordInfoManager.addWordInfoToArrayList(wordInfo);
-            }
-        }
-
-        System.out.println("Finished Searching data");
-
-        //단어, 감성 정보 출력
-        //wordInfoManager.printWordInfo(wordInfoManager.getWordInfoArrayList());
-
-        //각 단어별 분산도 출력
-        wordDensityManager.printDensityInfo();
-
-        //write csv
-        wordInfoCSVWriter.exportWordInfoToCVS(wordInfoManager.getWordInfoArrayList());
+        textData.setTextData(text);
+        textData.removeSpecialChar();
+        textData.setTextLength();
+        textData.setSentitment();
     }
-
-    public static long getPercentageOfPosition(int wordPosition, int totalLength){
-
-        return Math.round((long)(wordPosition * 100)/totalLength);
-    }
-
-    //1의 자리에서 반올림
-    //ex) 13 -> 10
-    //ex) 17 -> 20
-    public static int changeAsMultipleOfTen(long input){
-        return (int) ((input+5)/10 * 10);
-    }
-
-    public static String removeSpecialChar(String inputText){
-
-        inputText.replaceAll("\"", "");
-        inputText.replaceAll("<", "");
-        inputText.replaceAll(">", "");
-        inputText.replaceAll("\n", "");
-
-        return inputText;
-    }
-
-    private static java.util.List<KoreanTokenizer.KoreanToken> convertToList(scala.collection.Seq<KoreanTokenizer.KoreanToken> seq) {
-        return WrapAsJava$.MODULE$.seqAsJavaList(seq);
-    }
-
 
 }
 

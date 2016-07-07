@@ -8,25 +8,4 @@ import static org.junit.Assert.assertEquals;
  */
 public class TestKoreanTextTokenizer {
 
-    @Test
-    public void getPercentageOfPosition(){
-        int wordPosition = 10;
-        int textLength = 120;
-
-        long expected = (long) 8.0;
-        long result = KoreanTextTokenizer.getPercentageOfPosition(wordPosition, textLength);
-
-        assertEquals(expected, result);
-    }
-
-    @Test
-    public void changeAsMultipleOfTen(){
-        int input = 27;
-
-        int result = KoreanTextTokenizer.changeAsMultipleOfTen(input);
-        int expected = 30;
-
-        assertEquals(expected, result);
-    }
-
 }

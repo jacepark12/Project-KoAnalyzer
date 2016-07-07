@@ -8,10 +8,9 @@ import text.korean.PosDiscriminator;
 import text.korean.SearchCorpusData;
 import text.korean.fileio.WordInfoCSVWriter;
 import text.korean.managerclass.WordInfoManager;
-import text.korean.managerclass.WordInfoManager;
-import text.korean.managerclass.WordInfoManager;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,7 +20,9 @@ public class TextData implements SentimentTypeInterface{
 
     private String textData;
     private int textLength;
-    private SentimentType sentimentType;
+    private SentimentType calculatedSentiment;
+    //For comparing original sentiment and calculated sentiments
+    private SentimentType originalSentiment;
 
     private WordInfoManager wordInfoManager = new WordInfoManager();
 
@@ -56,12 +57,20 @@ public class TextData implements SentimentTypeInterface{
         this.textData = input;
     }
 
-    public SentimentType getSentimentType() {
-        return sentimentType;
+    public SentimentType getCalculatedSentiment() {
+        return calculatedSentiment;
     }
 
-    public void setSentimentType(SentimentType sentimentType) {
-        this.sentimentType = sentimentType;
+    public void setCalculatedSentiment(SentimentType calculatedSentiment) {
+        this.calculatedSentiment = calculatedSentiment;
+    }
+
+    public SentimentType getOriginalSentiment() {
+        return originalSentiment;
+    }
+
+    public void setOriginalSentiment(SentimentType originalSentiment) {
+        this.originalSentiment = originalSentiment;
     }
 
     //Getter & Setter ------------------------------------------------
@@ -125,9 +134,43 @@ public class TextData implements SentimentTypeInterface{
 
         //Calculate Word's Density
         wordInfoManager.calculateWordsDensity();
-        //write csv
+
+        //TODO 최종적으로 글에 대한 Sentiment를 설정해줘야 함
+       //write csv
         wordInfoCSVWriter.exportWordInfoToCVS(wordInfoManager.mapToArrayList());
 
+    }
+
+    public void calculateTextSentiment(){
+
+        //지금은 가중치고 뭐고 그런거 없음
+        int posCount = 0;
+        int negCount = 0;
+        ArrayList<WordInfo> wordInfos = wordInfoManager.mapToArrayList();
+
+        for (WordInfo wordInfo: wordInfos) {
+
+            switch (wordInfo.getSentimentType().toString()){
+                case "POS" :
+                    posCount++;
+                    break;
+                case "NEG" :
+                    negCount++;
+                    break;
+            }
+            System.out.println(wordInfo.getSentimentType().toString());
+
+        }
+
+        if(posCount > negCount){
+            calculatedSentiment = SentimentType.POS;
+        }else if(posCount < negCount){
+            calculatedSentiment = SentimentType.NEG;
+        }else if(negCount == posCount){
+            calculatedSentiment = SentimentType.NEUT;
+        }else{
+            calculatedSentiment = SentimentType.NODATA;
+        }
     }
 
     //TODO Move these methods to util package

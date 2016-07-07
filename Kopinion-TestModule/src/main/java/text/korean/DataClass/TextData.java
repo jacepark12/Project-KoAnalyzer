@@ -173,6 +173,14 @@ public class TextData implements SentimentTypeInterface{
         }
     }
 
+    public boolean compareOriginalAndCalculated(){
+        if(calculatedSentiment.equals(originalSentiment)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     //TODO Move these methods to util package
     private long getPercentageOfPosition(int wordPosition, int totalLength){
 

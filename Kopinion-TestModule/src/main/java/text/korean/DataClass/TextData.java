@@ -7,11 +7,11 @@ import scala.collection.convert.WrapAsJava$;
 import text.korean.PosDiscriminator;
 import text.korean.SearchCorpusData;
 import text.korean.fileio.WordInfoCSVWriter;
-import text.korean.managerclass.WordDensityManager;
+import text.korean.managerclass.WordInfoManager;
+import text.korean.managerclass.WordInfoManager;
 import text.korean.managerclass.WordInfoManager;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,10 +23,7 @@ public class TextData implements SentimentTypeInterface{
     private int textLength;
     private SentimentType sentimentType;
 
-    //TODO HashMap으로 바꿔야할듯
-    //단어당 하나의 wordDensity 객체가 있어야함
-    //ArrayList를 순차적으로 검색하기엔 퍼포먼스 문제가 있을듯
-    private ArrayList<WordDensity> tempWords = new ArrayList<>();
+    private WordInfoManager wordInfoManager = new WordInfoManager();
 
     //TODO Remove all Manager object
     //Singleton Objects
@@ -68,8 +65,9 @@ public class TextData implements SentimentTypeInterface{
     }
 
     //Getter & Setter ------------------------------------------------
-    public void setSentitment(){
+    public void setSentiment(){
         SentimentType tempSentiment = SentimentType.NODATA;
+
         //SearchCorpusData object for searching word in corpus data
         Seq<KoreanTokenizer.KoreanToken> tokens = getKoreanTokensFromText(this.textData);
 
@@ -79,49 +77,56 @@ public class TextData implements SentimentTypeInterface{
         // [한국어(Noun: 0, 3), 를(Josa: 3, 1),  (Space: 4, 1), 처리(Noun: 5, 2), 하는(Verb: 7, 2),  (Space: 9, 1), 예시(Noun: 10, 2), 입니(Adjective: 12, 2), 다(Eomi: 14, 1), ㅋㅋ(KoreanParticle: 15, 2),  (Space: 17, 1), #한국어(Hashtag: 18, 4)]
 
         int textIndex = 1;
-        List textTokens = convertToList(tokens);
-        for (Object textToken: textTokens) {
+        List<KoreanTokenizer.KoreanToken> textTokens = convertToList(tokens);
 
-            KoreanTokenizer.KoreanToken token = (KoreanTokenizer.KoreanToken)textToken;
+        for (KoreanTokenizer.KoreanToken textToken: textTokens) {
+
+            KoreanTokenizer.KoreanToken token = textToken;
+
+            String tokenText;
+            tokenText = token.text();
+
+            WordInfo wordInfo;
+            if(wordInfoManager.isWordInfoExists(tokenText)){
+                wordInfo = wordInfoManager.getWordInfoClass(tokenText);
+            }else{
+                wordInfo = new WordInfo();
+            }
+
             if(PosDiscriminator.isSentimentWord(token)){
-                WordDensity wordDensity = new WordDensity();
-
-                String text = token.text();
-                wordDensity.setWord(text);
+                wordInfo.setWord(tokenText);
 
                 try {
-                    tempSentiment = searchCorpusData.getWordSentimentType(text);
-                    wordDensity.setSentimentType(tempSentiment);
+                    tempSentiment = searchCorpusData.getWordSentimentType(tokenText);
+                    wordInfo.setSentimentType(tempSentiment);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
-                wordDensity.addDataToPositionArrayList(textIndex);
+                wordInfo.addDataToPositionArrayList(textIndex);
 
                 //%를 구한뒤 1의 자리에서 반올림
-                wordDensity.setPosAtTextPerCentage(changeAsMultipleOfTen(getPercentageOfPosition(textIndex, textLength)));
-                textIndex += text.length();
+                wordInfo.setPosAtTextPerCentage(changeAsMultipleOfTen(getPercentageOfPosition(textIndex, textLength)));
+                textIndex += tokenText.length();
 
-                tempWords.add(wordDensity);
+                wordInfoManager.updateWordInfo(wordInfo);
             }else{//save wordInfo as Neutral Word
 
-                WordDensity wordDensity = new WordDensity();
+                wordInfo.setWord(tokenText);
+                wordInfo.setSentimentType(SentimentType.NEUT);
+                wordInfo.setPosAtTextPerCentage(changeAsMultipleOfTen(getPercentageOfPosition(textIndex, textLength)));
+                wordInfo.addDataToPositionArrayList(textIndex);
+                textIndex += tokenText.length();
 
-                String text = token.text();
-                wordDensity.setWord(text);
-                wordDensity.setSentimentType(SentimentType.NEUT);
-                wordDensity.setPosAtTextPerCentage(changeAsMultipleOfTen(getPercentageOfPosition(textIndex, textLength)));
-                wordDensity.addDataToPositionArrayList(textIndex);
-                textIndex += text.length();
-
-                tempWords.add(wordDensity);
+                wordInfoManager.updateWordInfo(wordInfo);
             }
         }
 
         System.out.println("Finished Searching data");
-        //write csv
-        wordInfoCSVWriter.exportWordInfoToCVS(tempWords);
 
+        //Calculate Word's Density
+        wordInfoManager.calculateWordsDensity();
+        //write csv
+        wordInfoCSVWriter.exportWordInfoToCVS(wordInfoManager.mapToArrayList());
 
     }
 

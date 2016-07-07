@@ -3,41 +3,48 @@ package text.korean.managerclass;
 import text.korean.DataClass.WordInfo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.stream.Collectors;
 
 /**
- * Created by parkjaesung on 2016. 6. 29..
+ * Created by parkjaesung on 2016. 7. 2..
  */
-
-//Singleton Pattern
 public class WordInfoManager {
 
-    private ArrayList<WordInfo> wordInfoArrayList = new ArrayList<>();
+    //String key == Classs WordInfo memeber variable word
+    private HashMap<String, WordInfo> infoHashMap = new HashMap<>();
 
-    //Constructor
-    public WordInfoManager(){
-
+    public WordInfo getWordInfoClass(String key){
+        return this.infoHashMap.get(key);
     }
 
-    //Getter & Setter
-    public ArrayList<WordInfo> getWordInfoArrayList() {
-        return wordInfoArrayList;
+    public void updateWordInfo(WordInfo wordInfo){
+        infoHashMap.put(wordInfo.getWord(), wordInfo);
     }
 
-    public void setWordInfoArrayList(ArrayList<WordInfo> wordInfoArrayList) {
-        this.wordInfoArrayList = wordInfoArrayList;
+    public boolean isWordInfoExists(String key){
+        return infoHashMap.containsKey(key);
     }
 
-    public void addWordInfoToArrayList(WordInfo wordInfo){
-        this.wordInfoArrayList.add(wordInfo);
+    public ArrayList mapToArrayList() {
+        return infoHashMap.keySet().stream().map(o -> infoHashMap.get(o)).collect(Collectors.toCollection(ArrayList::new));
     }
 
-    public void printWordInfo(ArrayList<WordInfo> wordInfoArrayList){
+    public void calculateWordsDensity(){
+        Iterator keys = infoHashMap.keySet().iterator();
 
-        for (WordInfo wordInfo: wordInfoArrayList) {
-            System.out.println("단어 : " + wordInfo.getWord());
-            System.out.println("감성 타입 : " + wordInfo.getSentimentType().name());
-            System.out.println("글 내에서의 위치 : " + wordInfo.getPositionAtText() + "%");
+        while(keys.hasNext()){
+            infoHashMap.get(keys.next()).calculateDensity();
         }
     }
 
+    //Getter & Setter
+    public HashMap<String, WordInfo> getInfoHashMap() {
+        return infoHashMap;
+    }
+
+    public void setInfoHashMap(HashMap<String, WordInfo> infoHashMap) {
+        this.infoHashMap = infoHashMap;
+    }
 }

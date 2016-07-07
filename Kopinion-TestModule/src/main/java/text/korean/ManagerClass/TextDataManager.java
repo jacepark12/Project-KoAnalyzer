@@ -1,4 +1,6 @@
-package text.korean.DataClass;
+package text.korean.managerclass;
+
+import text.korean.DataClass.TextData;
 
 import java.util.ArrayList;
 
@@ -28,5 +30,9 @@ public class TextDataManager {
 
     public void setTextDatas(ArrayList<TextData> textDatas) {
         this.textDatas = textDatas;
+    }
+
+    public void addTextData(TextData input){
+        this.textDatas.add(input);
     }
 }

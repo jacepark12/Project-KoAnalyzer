@@ -52,13 +52,13 @@ public class WordInfoCSVWriter implements SentimentTypeInterface{
         assert csvWriter != null;
         csvWriter.writeNext(new String[] {"0", "10", "20", "30", "40", "50", "60", "70", "80", "90", "100"});
 
-        for (WordInfo wordInfo: wordInfoArrayList) {
+        for (WordInfo wordInfo : wordInfoArrayList) {
             if(wordInfo.getSentimentType().equals(SentimentType.POS)){
-                posCount[wordInfo.getPositionAtText()/10] ++;
+                posCount[wordInfo.getPosAtTextPerCentage()/10] ++;
             }else if(wordInfo.getSentimentType().equals(SentimentType.NEG)){
-                negCount[wordInfo.getPositionAtText()/10] ++;
+                negCount[wordInfo.getPosAtTextPerCentage()/10] ++;
             }else if(wordInfo.getSentimentType().equals(SentimentType.NEUT)){
-                neutCount[wordInfo.getPositionAtText()/10] ++;
+                neutCount[wordInfo.getPosAtTextPerCentage()/10] ++;
             }
 
         }

@@ -1,16 +1,6 @@
 package text.korean;
 
-import com.twitter.penguin.korean.TwitterKoreanProcessorJava;
-import com.twitter.penguin.korean.tokenizer.KoreanTokenizer;
-import scala.collection.Seq;
-import scala.collection.convert.WrapAsJava$;
 import text.korean.DataClass.*;
-import text.korean.managerclass.WordDensityManager;
-import text.korean.managerclass.WordInfoManager;
-import text.korean.fileio.WordInfoCSVWriter;
-
-import java.io.IOException;
-import java.util.List;
 
 /**
  * Created by parkjaesung on 2016. 6. 29..
@@ -43,7 +33,7 @@ public class KoreanTextTokenizer implements SentimentTypeInterface{
         textData.setTextData(text);
         textData.removeSpecialChar();
         textData.setTextLength();
-        textData.setSentitment();
+        textData.setSentiment();
     }
 
 }

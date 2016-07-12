@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by parkjaesung on 2016. 7. 2..
  */
-public class WordInfo implements SentimentTypeInterface{
+public class WordInfo implements SentimentTypeInterface, Comparable{
 
     private String word;
     //Variable positionAvg's value is only est by private method calculateDistribution
@@ -73,5 +73,20 @@ public class WordInfo implements SentimentTypeInterface{
         }
 
         this.density = distributionSum / this.positionArrayList.size()+1;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+
+        //Casting to WordInfo Class
+        WordInfo wordInfo = (WordInfo)o;
+
+        if(this.density < wordInfo.getDensity()){
+            return 1;
+        }else if(this.density > wordInfo.getDensity()){
+            return -1;
+        }else{ //this.density == wordInfo.getDensity();
+            return 0;
+        }
     }
 }

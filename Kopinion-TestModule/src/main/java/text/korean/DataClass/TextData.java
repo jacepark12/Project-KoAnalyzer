@@ -73,6 +73,9 @@ public class TextData implements SentimentTypeInterface{
         this.originalSentiment = originalSentiment;
     }
 
+    public WordInfoManager getWordInfoManager(){
+        return wordInfoManager;
+    }
     //Getter & Setter ------------------------------------------------
     public void setSentiment(){
         SentimentType tempSentiment = SentimentType.NODATA;
@@ -137,7 +140,7 @@ public class TextData implements SentimentTypeInterface{
 
         //TODO 최종적으로 글에 대한 Sentiment를 설정해줘야 함
        //write csv
-        wordInfoCSVWriter.exportWordInfoToCVS(wordInfoManager.mapToArrayList());
+        wordInfoCSVWriter.exportPositionToCSV(wordInfoManager.mapToArrayList());
 
     }
 

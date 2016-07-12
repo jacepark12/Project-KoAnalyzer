@@ -4,12 +4,9 @@ import com.opencsv.CSVReader;
 import text.korean.DataClass.SentimentTypeInterface;
 import text.korean.DataClass.TextData;
 
-import javax.xml.soap.Text;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by parkjaesung on 2016. 7. 6..
@@ -43,13 +40,13 @@ public class TextDataCSVReader implements SentimentTypeInterface{
             switch (nextLine[1])
             {
                 case "POS" :
-                    textData.setSentimentType(SentimentType.POS);
+                    textData.setOriginalSentiment(SentimentType.POS);
                     break;
                 case "NEG" :
-                    textData.setSentimentType(SentimentType.NEG);
+                    textData.setOriginalSentiment(SentimentType.NEG);
                     break;
                 default:
-                    textData.setSentimentType(SentimentType.NEUT);
+                    textData.setOriginalSentiment(SentimentType.NEUT);
             }
 
             //전처리 작업

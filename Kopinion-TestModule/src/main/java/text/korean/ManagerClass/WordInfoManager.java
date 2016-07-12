@@ -2,7 +2,9 @@ package text.korean.managerclass;
 
 import text.korean.DataClass.WordInfo;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.stream.Collectors;
@@ -28,7 +30,12 @@ public class WordInfoManager {
     }
 
     public ArrayList mapToArrayList() {
-        return infoHashMap.keySet().stream().map(o -> infoHashMap.get(o)).collect(Collectors.toCollection(ArrayList::new));
+        ArrayList result = infoHashMap.keySet().stream().map(o -> infoHashMap.get(o)).collect(Collectors.toCollection(ArrayList::new));
+
+        //Sort WordInfos by density(double)
+        Collections.sort(result);
+
+        return result;
     }
 
     public void calculateWordsDensity(){

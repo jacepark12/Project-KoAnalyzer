@@ -3,8 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Client/Client.iml" filepath="$PROJECT_DIR$/Client/Client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/KoAnalyzer-Server/KoAnalyzer-Server.iml" filepath="$PROJECT_DIR$/KoAnalyzer-Server/KoAnalyzer-Server.iml" />
       <module fileurl="file://$PROJECT_DIR$/Kopinion-TestModule/Kopinion-TestModule.iml" filepath="$PROJECT_DIR$/Kopinion-TestModule/Kopinion-TestModule.iml" />
-      <module fileurl="file://$USER_HOME$/Downloads/jetty-webxml-example/jetty-webxml-example.iml" filepath="$USER_HOME$/Downloads/jetty-webxml-example/jetty-webxml-example.iml" />
     </modules>
   </component>
 </project>

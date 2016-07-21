@@ -9,7 +9,8 @@
         <option value="$PROJECT_DIR$/Client/pom.xml" />
         <option value="$PROJECT_DIR$/TestModul/pom.xml" />
         <option value="$PROJECT_DIR$/Kopinion-TestModule/pom.xml" />
-        <option value="$USER_HOME$/Downloads/jetty-webxml-example/pom.xml" />
+        <option value="$PROJECT_DIR$/jetty-webxml-example/pom.xml" />
+        <option value="$PROJECT_DIR$/KoAnalyzer-Server/pom.xml" />
       </list>
     </option>
   </component>

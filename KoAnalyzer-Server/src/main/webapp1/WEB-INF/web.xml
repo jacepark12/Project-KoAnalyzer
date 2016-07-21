@@ -1,0 +1,38 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+
+	<display-name>Webapp1</display-name>
+	
+	
+	<listener>
+		<listener-class>com.javacodegeeks.snippets.enterprise.embeddedjetty.listener.SpecificListener</listener-class>
+	</listener>
+	
+	<servlet>
+		<servlet-name>specificServlet</servlet-name>
+		<servlet-class>com.javacodegeeks.snippets.enterprise.embeddedjetty.servlet.SpecificServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>specificServlet</servlet-name>
+		<url-pattern>/specific/*</url-pattern>
+	</servlet-mapping>
+	
+	
+	<filter>
+		<filter-name>SpecificFilter</filter-name>
+		<filter-class>com.javacodegeeks.snippets.enterprise.embeddedjetty.filter.SpecificFilter</filter-class>
+
+	</filter>
+	<filter-mapping>
+		<filter-name>SpecificFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	
+	
+
+	
+</web-app>

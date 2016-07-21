@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.javacodegeeks.snippets.enterprise</groupId>
-	<artifactId>jetty-webxml-example</artifactId>
+	<artifactId>KoAnalyzer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<dependencies>
@@ -26,6 +26,82 @@
 		</dependency>
 		<!--Jetty dependencies end here -->
 
+		<!--Jersey dependencies start here -->
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-bundle</artifactId>
+			<version>1.19</version>
+		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20140107</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-server</artifactId>
+			<version>1.19</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-core</artifactId>
+			<version>1.19</version>
+		</dependency>
+		<!--Jersey dependencies end here -->
+
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>net.sf.alchim</groupId>
+				<artifactId>winstone-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>embed</goal>
+						</goals>
+						<phase>package</phase>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.3</version>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<!-- eclipse 에서는  target 밑의  lib 에 생성 됨 -->
+					<outputDirectory>target/lib</outputDirectory>
+					<overWriteIfNewer>true</overWriteIfNewer>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.2.1</version>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<mainClass>com.analyze.ko.framework.server.EmbeddedJettyWebXmlConfigurationMain</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
 
 </project>

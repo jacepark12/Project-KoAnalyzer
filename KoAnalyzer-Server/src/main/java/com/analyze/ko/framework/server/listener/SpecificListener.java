@@ -1,4 +1,4 @@
-package com.javacodegeeks.snippets.enterprise.embeddedjetty.listener;
+package com.analyze.ko.framework.server.listener;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;

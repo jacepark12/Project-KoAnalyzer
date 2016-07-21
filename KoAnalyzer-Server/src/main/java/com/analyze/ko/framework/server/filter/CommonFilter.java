@@ -1,4 +1,4 @@
-package com.javacodegeeks.snippets.enterprise.embeddedjetty.filter;
+package com.analyze.ko.framework.server.filter;
 
 import java.io.IOException;
 
@@ -9,7 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-public class SpecificFilter implements Filter {
+public class CommonFilter implements Filter {
 
 	FilterConfig filterConfig = null;
 
@@ -23,9 +23,9 @@ public class SpecificFilter implements Filter {
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
 			throws IOException, ServletException {
 	
-		System.out.println("Specific Filter first!");
+		System.out.println("Common first!");
 		filterChain.doFilter(servletRequest, servletResponse);
-		System.out.println("Specific Filter last!");
+		System.out.println("Common last!");
 	
 
 	}

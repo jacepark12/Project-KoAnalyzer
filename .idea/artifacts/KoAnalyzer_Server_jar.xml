@@ -1,0 +1,52 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="KoAnalyzer-Server:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/KoAnalyzer_Server_jar</output-path>
+    <root id="archive" name="KoAnalyzer-Server.jar">
+      <element id="module-output" name="KoAnalyzer-Server" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/eclipse/jetty/orbit/org.eclipse.jdt.core/3.8.2.v20130121/org.eclipse.jdt.core-3.8.2.v20130121.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/json/json/20140107/json-20140107.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/javax/servlet/jsp/javax.servlet.jsp-api/2.3.1/javax.servlet.jsp-api-2.3.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/eclipse/jetty/jetty-util/9.2.11.v20150529/jetty-util-9.2.11.v20150529.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/sun/jersey/jersey-server/1.19/jersey-server-1.19.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/eclipse/jetty/jetty-io/9.2.11.v20150529/jetty-io-9.2.11.v20150529.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/eclipse/jetty/jetty-webapp/9.2.11.v20150529/jetty-webapp-9.2.11.v20150529.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/glassfish/javax.el/3.0.0/javax.el-3.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/eclipse/jetty/jetty-http/9.2.11.v20150529/jetty-http-9.2.11.v20150529.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/glassfish/web/javax.servlet.jsp.jstl/1.2.2/javax.servlet.jsp.jstl-1.2.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/eclipse/jetty/jetty-security/9.2.11.v20150529/jetty-security-9.2.11.v20150529.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/eclipse/jetty/jetty-servlet/9.2.11.v20150529/jetty-servlet-9.2.11.v20150529.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/eclipse/jetty/jetty-xml/9.2.11.v20150529/jetty-xml-9.2.11.v20150529.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/sun/jersey/jersey-bundle/1.19/jersey-bundle-1.19.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/glassfish/web/javax.servlet.jsp/2.3.2/javax.servlet.jsp-2.3.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/sun/jersey/jersey-core/1.19/jersey-core-1.19.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/eclipse/jetty/toolchain/jetty-schemas/3.1.M0/jetty-schemas-3.1.M0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/eclipse/jetty/jetty-server/9.2.11.v20150529/jetty-server-9.2.11.v20150529.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/eclipse/jetty/orbit/javax.servlet.jsp.jstl/1.2.0.v201105211821/javax.servlet.jsp.jstl-1.2.0.v201105211821.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/javax/ws/rs/jsr311-api/1.1.1/jsr311-api-1.1.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/eclipse/jetty/jetty-jsp/9.2.11.v20150529/jetty-jsp-9.2.11.v20150529.jar" path-in-jar="/" />
+      <element id="library" level="project" name="Maven: org.eclipse.jetty:jetty-server:9.2.11.v20150529" />
+      <element id="library" level="project" name="Maven: javax.servlet:javax.servlet-api:3.1.0" />
+      <element id="library" level="project" name="Maven: org.eclipse.jetty:jetty-http:9.2.11.v20150529" />
+      <element id="library" level="project" name="Maven: org.eclipse.jetty:jetty-util:9.2.11.v20150529" />
+      <element id="library" level="project" name="Maven: org.eclipse.jetty:jetty-io:9.2.11.v20150529" />
+      <element id="library" level="project" name="Maven: org.eclipse.jetty:jetty-webapp:9.2.11.v20150529" />
+      <element id="library" level="project" name="Maven: org.eclipse.jetty:jetty-xml:9.2.11.v20150529" />
+      <element id="library" level="project" name="Maven: org.eclipse.jetty:jetty-servlet:9.2.11.v20150529" />
+      <element id="library" level="project" name="Maven: org.eclipse.jetty:jetty-security:9.2.11.v20150529" />
+      <element id="library" level="project" name="Maven: org.eclipse.jetty:jetty-jsp:9.2.11.v20150529" />
+      <element id="library" level="project" name="Maven: org.eclipse.jetty.toolchain:jetty-schemas:3.1.M0" />
+      <element id="library" level="project" name="Maven: javax.servlet.jsp:javax.servlet.jsp-api:2.3.1" />
+      <element id="library" level="project" name="Maven: org.glassfish.web:javax.servlet.jsp:2.3.2" />
+      <element id="library" level="project" name="Maven: org.eclipse.jetty.orbit:javax.servlet.jsp.jstl:1.2.0.v201105211821" />
+      <element id="library" level="project" name="Maven: org.glassfish.web:javax.servlet.jsp.jstl:1.2.2" />
+      <element id="library" level="project" name="Maven: org.glassfish:javax.el:3.0.0" />
+      <element id="library" level="project" name="Maven: org.eclipse.jetty.orbit:org.eclipse.jdt.core:3.8.2.v20130121" />
+      <element id="library" level="project" name="Maven: com.sun.jersey:jersey-bundle:1.19" />
+      <element id="library" level="project" name="Maven: javax.ws.rs:jsr311-api:1.1.1" />
+      <element id="library" level="project" name="Maven: org.json:json:20140107" />
+      <element id="library" level="project" name="Maven: com.sun.jersey:jersey-server:1.19" />
+      <element id="library" level="project" name="Maven: com.sun.jersey:jersey-core:1.19" />
+    </root>
+  </artifact>
+</component>

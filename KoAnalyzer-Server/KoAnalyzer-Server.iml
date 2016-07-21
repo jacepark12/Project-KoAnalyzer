@@ -29,5 +29,10 @@
     <orderEntry type="library" name="Maven: org.glassfish.web:javax.servlet.jsp.jstl:1.2.2" level="project" />
     <orderEntry type="library" name="Maven: org.glassfish:javax.el:3.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty.orbit:org.eclipse.jdt.core:3.8.2.v20130121" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.jersey:jersey-bundle:1.19" level="project" />
+    <orderEntry type="library" name="Maven: javax.ws.rs:jsr311-api:1.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.json:json:20140107" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.jersey:jersey-server:1.19" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.jersey:jersey-core:1.19" level="project" />
   </component>
 </module>

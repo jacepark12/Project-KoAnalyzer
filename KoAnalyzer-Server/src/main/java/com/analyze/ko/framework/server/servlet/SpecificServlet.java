@@ -1,4 +1,4 @@
-package com.javacodegeeks.snippets.enterprise.embeddedjetty.servlet;
+package com.analyze.ko.framework.server.servlet;
 
 import java.io.IOException;
 

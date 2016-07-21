@@ -63,7 +63,7 @@ public class KoreanTextTokenizer implements SentimentTypeInterface{
      */
     public static void main(String[] args){
 
-        /*
+
         int temp = 0;
         ArrayList<TextData> textDatas = null;
         try {
@@ -82,8 +82,9 @@ public class KoreanTextTokenizer implements SentimentTypeInterface{
             {
                 temp++;
             }
-        }*/
-
+        }
+        System.out.println("일치한 개수 :" + temp);
+/*
         TextData textData = new TextData();
 
         textData.setTextData(text);
@@ -94,8 +95,8 @@ public class KoreanTextTokenizer implements SentimentTypeInterface{
         textData.compareOriginalAndCalculated();
 
         ArrayList<WordInfo> temp = textData.getWordInfoManager().mapToArrayList();
-
-        wordInfoCSVWriter.exportDensityToCSV(temp);
+*/
+        //wordInfoCSVWriter.exportDensityToCSV(temp);
     }
 
 }

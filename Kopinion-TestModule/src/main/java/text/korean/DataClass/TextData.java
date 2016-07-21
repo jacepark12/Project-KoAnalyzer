@@ -146,6 +146,7 @@ public class TextData implements SentimentTypeInterface{
 
     public void calculateTextSentiment(){
 
+        int Theta = 5000;
         //지금은 가중치고 뭐고 그런거 없음
         int posCount = 0;
         int negCount = 0;
@@ -155,10 +156,10 @@ public class TextData implements SentimentTypeInterface{
 
             switch (wordInfo.getSentimentType().toString()){
                 case "POS" :
-                    posCount++;
+                    posCount+= (int)Theta * wordInfo.getDensity();
                     break;
                 case "NEG" :
-                    negCount++;
+                    negCount+= (int)Theta * wordInfo.getDensity();
                     break;
             }
             System.out.println(wordInfo.getSentimentType().toString());

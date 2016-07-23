@@ -4,18 +4,22 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
 public class ResultTest {
-    private List<String> expected;
+    private List<URL> expected;
 
     @Before
     public void setUp() {
-        expected = new ArrayList<>();
-        expected.add("A");
-        expected.add("B");
+        try {
+            expected = new ArrayList<>();
+            expected.add(new URL("http://www.A.com"));
+            expected.add(new URL("http://www.B.com"));
+        } catch (Exception e) {
+        }
     }
 
     @Test

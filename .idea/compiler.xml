@@ -23,7 +23,6 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="Client" />
-        <module name="DBServer" />
         <module name="jetty-webxml-example" />
         <module name="KoAnalyzer-Server" />
         <module name="Kopinion-TestModule" />

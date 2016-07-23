@@ -7,19 +7,15 @@ import web.searcher.Result;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 import java.util.Scanner;
 
 public class BaseApp {
     public static void main(String[] args) {
-        GoogleSearcher searcher = new GoogleSearcher();
-
-        Scanner scan = new Scanner(System.in);
-        String keyword = scan.nextLine();
-        Result urls = searcher.search(new Query(keyword));
-
         String currentDirectory = System.getProperty("user.dir");
-        String outPutFileDirectory = currentDirectory + "/Client/src/resource/out.txt";
+        String outPutFileDirectory = currentDirectory + "/Client/src/main/resources/out.txt";
 
         FileWriter out;
         try {
@@ -29,15 +25,16 @@ public class BaseApp {
             return;
         }
 
-        for (int i = 0; urls.hasNext(); i++) {
-            String url = urls.next();
-            Page page = new Page(url);
-            try {
-                out.write(page.mainArticle().get("content").toString());
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-                break;
+        GoogleSearcher searcher = new GoogleSearcher();
+        Result urls = searcher.search(new Query("sample_keyword"));
+        try {
+            for (int i = 0; urls.hasNext(); i++) {
+                Page page = new Page(urls.next());
+                out.write(page.mainArticle().withoutTags().toString());
             }
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+            return;
         }
 
         try {

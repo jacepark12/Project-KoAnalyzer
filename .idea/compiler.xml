@@ -22,36 +22,19 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="Client" />
+        <module name="DBServer" />
         <module name="jetty-webxml-example" />
         <module name="KoAnalyzer-Server" />
-        <module name="Kopinion-TestModule (1)" />
-      </profile>
-      <profile default="false" name="Annotation profile for Client" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="true" />
-        <module name="Client" />
-      </profile>
-      <profile default="false" name="Annotation profile for DBServer" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="true" />
-      </profile>
-      <profile default="false" name="Annotation profile for Kopinion-TestModule" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="true" />
         <module name="Kopinion-TestModule" />
+        <module name="Kopinion-TestModule (1)" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Client" target="1.8" />
       <module name="DBServer" target="1.8" />
       <module name="jetty-webxml-example" target="1.5" />
-      <module name="KoAnalyzer-Server" target="1.5" />
+      <module name="KoAnalyzer-Server" target="1.8" />
       <module name="Kopinion-TestModule" target="1.8" />
     </bytecodeTargetLevel>
   </component>

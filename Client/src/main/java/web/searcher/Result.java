@@ -1,19 +1,20 @@
 package web.searcher;
 
+import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-public class Result implements Iterator<String> {
-    private List<String> data = null;
+public class Result implements Iterator<URL> {
+    private List<URL> data = null;
     private int index = 0;
 
-    public Result(List<String> searched) {
+    public Result(List<URL> searched) {
         data = searched;
     }
 
     @Override
-    public String next() {
+    public URL next() {
         if (hasNext())
             return data.get(index++);
         else

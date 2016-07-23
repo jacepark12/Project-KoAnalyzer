@@ -9,7 +9,6 @@ import web.searcher.*;
         GoogleSearcherTest.class,
         QueryTest.class,
         DocumentTest.class,
-        PageTest.class,
         ResultTest.class,
 })
 

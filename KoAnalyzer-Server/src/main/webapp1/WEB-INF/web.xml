@@ -18,4 +18,13 @@
 		<servlet-name>Ko-Analyze Rest API</servlet-name>
 		<url-pattern>/rest/*</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>jspTest</servlet-name>
+		<servlet-class>com.analyze.ko.framework.server.servlet.TestJSP</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>jspTest</servlet-name>
+		<url-pattern>/jsptest</url-pattern>
+	</servlet-mapping>
 </web-app>

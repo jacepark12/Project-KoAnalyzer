@@ -18,7 +18,12 @@ import java.util.List;
 /**
  * Created by parkjaesung on 2016. 7. 5..
  */
-public class TextData implements SentimentTypeInterface{
+
+/*
+Document Class Usage
+
+ */
+public class Document implements SentimentTypeInterface{
 
     private String textData;
     private int textLength;

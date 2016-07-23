@@ -19,8 +19,7 @@ public class BaseApp {
         Result urls = searcher.search(new Query(keyword));
 
         String currentDirectory = System.getProperty("user.dir");
-        String outPutFileDirectory = currentDirectory + "/Client/src/resource/out.txt";
-
+        String outPutFileDirectory = currentDirectory + "/Client/src/main/resources/out.txt";
         FileWriter out;
         try {
             out = new FileWriter(outPutFileDirectory);
@@ -33,6 +32,7 @@ public class BaseApp {
             String url = urls.next();
             Page page = new Page(url);
             try {
+                System.out.println(page.mainArticle().get("content").toString());
                 out.write(page.mainArticle().get("content").toString());
             } catch (Exception e) {
                 System.out.println(e.getMessage());

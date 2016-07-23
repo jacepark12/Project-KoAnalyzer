@@ -43,6 +43,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="KoAnalyzer-Server" />
         <module name="Kopinion-TestModule" />
       </profile>
       <profile default="false" name="Annotation profile for KoAnalyzer-Server" enabled="true">

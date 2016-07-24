@@ -1,12 +1,19 @@
 package com.analyze.ko.framework.server;
 
+import com.analyze.ko.framework.server.manager.DocumentFile;
+import com.analyze.ko.framework.server.manager.FileManager;
+import com.analyze.ko.framework.server.util.FileIO;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.HandlerCollection;
 import org.eclipse.jetty.webapp.WebAppContext;
-
+import java.io.*;
 public class EmbeddedJettyWebXmlConfigurationMain {
 
+	private static String currentDirectory = System.getProperty("user.dir");
+	private static String documentFilesDirectory = currentDirectory + "/KoAnalyzer-Server/src/main/resources/DataDocuments/";
 	public static void main(String[] args) throws Exception {
+		FileIO fileIO = FileIO.getInstance();
+		FileManager fileManager = FileManager.getInstance();
 
 		Server server = new Server(8080);
 
@@ -36,5 +43,17 @@ public class EmbeddedJettyWebXmlConfigurationMain {
 		System.out.println("Started!");
 		server.join();
 
+		//Initialize FileManager
+		File documentFilesDir = new File(documentFilesDirectory);
+		File documentFiles[] = documentFilesDir.listFiles();
+
+		for(File documentFile : documentFiles){
+			DocumentFile docFile = new DocumentFile();
+
+			docFile.setText(fileIO.readFile(documentFile.getPath()));
+			docFile.setIdx(documentFile.getName());
+
+			fileManager.addDocumentFile(docFile);
+		}
 	}
 }

@@ -22,7 +22,8 @@ public class SearchRestAPI {
     @Produces(MediaType.TEXT_PLAIN)
     @Path("/google/keyword={keyword}&num={num}")
     public String startWebCrawling(@PathParam("keyword")final String keyword, @PathParam("num")final int num){
-        String result = "";
+
+        /*String result = "";
         GoogleSearcher searcher = new GoogleSearcher();
         Result urls = searcher.search(new Query(keyword));
 
@@ -36,7 +37,8 @@ public class SearchRestAPI {
                 System.out.println(e.getMessage());
                 break;
             }
-        }
+        }*/
+        String result = "test";
 
         return result;
     }

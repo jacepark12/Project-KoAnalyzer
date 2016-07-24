@@ -11,8 +11,9 @@ import java.io.IOException;
  */
 public class SearchCorpusData implements SentimentTypeInterface {
 
+    //TODO Reset filePath
     //set filePath in property file
-    private static String filePath = System.getProperty("user.dir") + "/Kopinion-TestModule/src/main/resources/TextData/corpus.csv";
+    private static String filePath = System.getProperty("user.dir") + "/KoAnalyzer-Server/src/main/resources/SentimentData/corpus.csv";
 
     //private CSVReader reader;
     private static SearchCorpusData instance =  new SearchCorpusData();
@@ -20,13 +21,7 @@ public class SearchCorpusData implements SentimentTypeInterface {
 
     //constructor
     private SearchCorpusData(){
-        /*
-        /*
-        try {
-            this.reader = new CSVReader(new FileReader(filePath));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }*/
+
     }
 
     public static SearchCorpusData getInstance(){
@@ -89,16 +84,6 @@ public class SearchCorpusData implements SentimentTypeInterface {
                     }
                     break;
 
-              /*  case "SubjTag" :
-                    sentimentType = getSentimentFromCol(nextLine, word, 7);
-
-                    if(sentimentType.equals(SentimentType.POS)){
-                        posCount++;
-                    }else if(sentimentType.equals(SentimentType.NEG)){
-                        negCount++;
-                    }
-
-                    break;*/
             }
         }
 

@@ -21,7 +21,7 @@ public class SaveDocRestAPI {
     public String saveDocument(@PathParam("doc")final String doc){
         String currentDirectory = System.getProperty("user.dir");
         String idx = UUID.randomUUID().toString();
-        String outPutFileDirectory = currentDirectory + "/KoAnalyzer-Server/src/main/resources/"+ idx +".txt";
+        String outPutFileDirectory = currentDirectory + "/KoAnalyzer-Server/src/main/resources/DataDocuments/"+ idx +".txt";
 
         FileWriter fw;
 

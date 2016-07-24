@@ -13,6 +13,7 @@ import java.io.IOException;
 public class TestJSP extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("TestJsp doGet Method");
         RequestDispatcher rd;
         rd = getServletContext().getRequestDispatcher("/test.jsp");
 

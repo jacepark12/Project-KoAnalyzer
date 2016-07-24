@@ -20,10 +20,14 @@
 	</servlet-mapping>
 
 	<servlet>
-		<servlet-name>Ko-Analyze analyze Rest API</servlet-name>
-		<servlet-class>com.analyze.ko.framework.server.servlet.rest</servlet-class>
+		<servlet-name>WebAnalyzeDocument</servlet-name>
+		<servlet-class>com.analyze.ko.framework.server.servlet.AnalyzeDocJSP</servlet-class>
 	</servlet>
-	
+	<servlet-mapping>
+		<servlet-name>WebAnalyzeDocument</servlet-name>
+		<url-pattern>/web/analyze/document</url-pattern>
+	</servlet-mapping>
+
 	<servlet>
 		<servlet-name>jspTest</servlet-name>
 		<servlet-class>com.analyze.ko.framework.server.servlet.TestJSP</servlet-class>

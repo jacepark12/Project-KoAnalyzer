@@ -33,7 +33,6 @@ public class Document implements SentimentTypeInterface{
 
     private WordInfoManager wordInfoManager = new WordInfoManager();
 
-    //TODO Remove all Manager object
     //Singleton Objects
     private SearchCorpusData searchCorpusData = SearchCorpusData.getInstance();
     private WordInfoCSVWriter wordInfoCSVWriter = WordInfoCSVWriter.getInstance();

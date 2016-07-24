@@ -1,7 +1,11 @@
 package com.analyze.ko.framework.korean;
 
-import text.korean.fileio.TextDataCSVReader;
-import text.korean.fileio.WordInfoCSVWriter;
+
+
+import com.analyze.ko.framework.korean.DataClass.SentimentTypeInterface;
+import com.analyze.ko.framework.korean.fileio.TextDataCSVReader;
+import com.analyze.ko.framework.korean.fileio.WordInfoCSVWriter;
+import com.analyze.ko.framework.korean.DataClass.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,7 +13,7 @@ import java.util.ArrayList;
 /**
  * Created by parkjaesung on 2016. 6. 29..
  */
-public class KoreanTextTokenizer implements SentimentTypeInterface{
+public class KoreanTextTokenizer implements SentimentTypeInterface {
 
     //TODO 문자열 전처리 과정 추가
     //TODO 1순위 : 시각화
@@ -62,27 +66,27 @@ public class KoreanTextTokenizer implements SentimentTypeInterface{
 
 
         int temp = 0;
-        ArrayList<TextData> textDatas = null;
+        ArrayList<Document> documents = null;
         try {
-            textDatas = textDataCSVReader.getTextDatasFromCSV();
+            documents = textDataCSVReader.getTextDatasFromCSV();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        for (TextData textData: textDatas) {
-            textData.removeSpecialChar();
-            textData.setTextLength();
-            textData.setSentiment();
-            textData.calculateTextSentiment();
+        for (Document document : documents) {
+            document.removeSpecialChar();
+            document.setTextLength();
+            document.setSentiment();
+            document.calculateTextSentiment();
 
-            if(textData.compareOriginalAndCalculated())
+            if(document.compareOriginalAndCalculated())
             {
                 temp++;
             }
         }
         System.out.println("일치한 개수 :" + temp);
 /*
-        TextData textData = new TextData();
+        Document textData = new Document();
 
         textData.setTextData(text);
         textData.removeSpecialChar();

@@ -16,6 +16,7 @@ import com.analyze.ko.framework.korean.DataClass.Document;
 import com.analyze.ko.framework.korean.DataClass.SentimentTypeInterface;
 import com.analyze.ko.framework.korean.DataClass.WordInfo;
 import com.analyze.ko.framework.korean.managerclass.WordInfoManager;
+import com.analyze.ko.framework.server.util.FileIO;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -26,6 +27,7 @@ public class AnalyzeDocJSP extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        FileIO fileIO = FileIO.getInstance();
         String currentDirectory = System.getProperty("user.dir");
         String idx = req.getParameter("idx");
         String outPutFileDirectory = currentDirectory + "/KoAnalyzer-server/src/main/resources/DataDocuments/"+ idx +".txt";
@@ -35,21 +37,7 @@ public class AnalyzeDocJSP extends HttpServlet {
         System.out.println("AnalyzeDocJSP doGet");
         System.out.println(req.getParameter("idx : "+ idx));
 
-        //Read from resources
-        BufferedReader br = new BufferedReader(new FileReader(outPutFileDirectory));
-        try {
-            String line = br.readLine();
-
-            while (line != null) {
-                sb.append(line);
-                sb.append("\n");
-                line = br.readLine();
-            }
-        } finally {
-            br.close();
-        }
-
-        docText = sb.toString();
+        docText = fileIO.readFile(outPutFileDirectory);
 
         //Create Document Object and analzye
         Document document = new Document();

@@ -1,5 +1,9 @@
 package com.analyze.ko.framework.server.servlet.rest;
 
+import com.analyze.ko.framework.korean.DataClass.Document;
+import com.analyze.ko.framework.server.manager.DocumentFile;
+import com.analyze.ko.framework.server.manager.FileManager;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -23,6 +27,7 @@ public class SaveDocRestAPI {
         String idx = UUID.randomUUID().toString();
         String outPutFileDirectory = currentDirectory + "/KoAnalyzer-Server/src/main/resources/DataDocuments/"+ idx +".txt";
 
+        FileManager fileManager = FileManager.getInstance();
         FileWriter fw;
 
         FileWriter out;
@@ -44,6 +49,12 @@ public class SaveDocRestAPI {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+
+        DocumentFile docFile = new DocumentFile();
+        docFile.setIdx(idx);
+        docFile.setText(doc);
+
+        fileManager.addDocumentFile(docFile);
 
         return "Saving Document has been successed! \n Document idx : " + idx;
     }

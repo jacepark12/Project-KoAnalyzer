@@ -1,9 +1,11 @@
 package com.analyze.ko.framework.server.servlet.rest;
 
+import com.analyze.ko.framework.server.util.FileIO;
 import com.analyze.ko.framework.server.web.Page;
 import com.analyze.ko.framework.server.web.searcher.GoogleSearcher;
 import com.analyze.ko.framework.server.web.searcher.Query;
 import com.analyze.ko.framework.server.web.searcher.Result;
+import org.json.JSONObject;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -19,27 +21,36 @@ import javax.ws.rs.core.MediaType;
 public class SearchRestAPI {
 
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    @Path("/google/keyword={keyword}&num={num}")
-    public String startWebCrawling(@PathParam("keyword")final String keyword, @PathParam("num")final int num){
-
-        /*String result = "";
+    @Produces("application/json"+ ";charset=utf-8")
+    @Path("/google/keyword={keyword}&num={num}&save={save}") //save -> true or false
+    public String startWebCrawling(@PathParam("keyword")final String keyword, @PathParam("num")final int num, @PathParam("save")final String save){
+        JSONObject resultJSON = new JSONObject();
+        String searchResult = "";
         GoogleSearcher searcher = new GoogleSearcher();
         Result urls = searcher.search(new Query(keyword));
+
+        resultJSON.put("keyword", keyword);
 
         for (int i = 0; urls.hasNext(); i++) {
             String url = urls.next();
             Page page = new Page(url);
             try {
-                result+= page.mainArticle().get("content").toString();
+                searchResult+= page.mainArticle().get("content").toString();
             //    out.write(page.mainArticle().get("content").toString());
             } catch (Exception e) {
                 System.out.println(e.getMessage());
                 break;
             }
-        }*/
-        String result = "test";
+        }
 
-        return result;
+        if(save.trim().equals("true")){
+            FileIO fileIO = FileIO.getInstance();
+
+            resultJSON.put("idx" ,fileIO.savetoDoc(searchResult));
+        }
+
+        resultJSON.put("searchResult", resultJSON);
+
+        return resultJSON.toString();
     }
 }

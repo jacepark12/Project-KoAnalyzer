@@ -1,9 +1,10 @@
 package com.analyze.ko.framework.server.util;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import com.analyze.ko.framework.server.manager.DocumentFile;
+import com.analyze.ko.framework.server.manager.FileManager;
+
+import java.io.*;
+import java.util.UUID;
 
 /**
  * Created by parkjaesung on 2016. 7. 24..
@@ -45,4 +46,41 @@ public class FileIO {
 
         return sb.toString();
     }
+
+    public String savetoDoc(String doc){
+        String currentDirectory = System.getProperty("user.dir");
+        String idx = UUID.randomUUID().toString();
+        String outPutFileDirectory = currentDirectory + "/KoAnalyzer-Server/src/main/resources/DataDocuments/"+ idx +".txt";
+
+        FileManager fileManager = FileManager.getInstance();
+        FileWriter fw;
+
+        FileWriter out = null;
+        try {
+            out = new FileWriter(outPutFileDirectory);
+        } catch(IOException e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            out.write(doc);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            out.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+
+        DocumentFile docFile = new DocumentFile();
+        docFile.setIdx(idx);
+        docFile.setText(doc);
+
+        fileManager.addDocumentFile(docFile);
+
+        return idx;
+    }
+
 }

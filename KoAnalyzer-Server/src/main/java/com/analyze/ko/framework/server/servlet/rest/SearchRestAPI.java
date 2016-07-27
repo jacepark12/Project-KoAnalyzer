@@ -22,8 +22,8 @@ public class SearchRestAPI {
 
     @GET
     @Produces("application/json"+ ";charset=utf-8")
-    @Path("/google/keyword={keyword}&num={num}&save={save}") //save -> true or false
-    public String startWebCrawling(@PathParam("keyword")final String keyword, @PathParam("num")final int num, @PathParam("save")final String save){
+    @Path("/google/keyword={keyword}&num={num}") //save -> true or false
+    public String startWebCrawling(@PathParam("keyword")final String keyword, @PathParam("num")final int num){
         JSONObject resultJSON = new JSONObject();
         String searchResult = "";
         GoogleSearcher searcher = new GoogleSearcher();
@@ -36,19 +36,15 @@ public class SearchRestAPI {
             Page page = new Page(url);
             try {
                 searchResult+= page.mainArticle().get("content").toString();
-            //    out.write(page.mainArticle().get("content").toString());
             } catch (Exception e) {
                 System.out.println(e.getMessage());
                 break;
             }
         }
 
-        if(save.trim().equals("true")){
-            FileIO fileIO = FileIO.getInstance();
+        FileIO fileIO = FileIO.getInstance();
 
-            resultJSON.put("idx" ,fileIO.savetoDoc(searchResult));
-        }
-
+        resultJSON.put("idx" ,fileIO.savetoDoc(searchResult));
         resultJSON.put("searchResult", resultJSON);
 
         return resultJSON.toString();

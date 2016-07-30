@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="KoAnalyzer-Server:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/KoAnalyzer_Server_war</output-path>
+    <root id="archive" name="KoAnalyzer-Server_war.war">
+      <element id="artifact" artifact-name="KoAnalyzer-Server:war exploded" />
+    </root>
+  </artifact>
+</component>

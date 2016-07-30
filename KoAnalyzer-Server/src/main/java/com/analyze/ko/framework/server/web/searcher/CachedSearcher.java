@@ -8,12 +8,12 @@ public class CachedSearcher implements Searcher {
         this.searcher = searcher;
     }
 
-
+    @Override
     public Result search(Query query) {
         return search(query, 1);
     }
 
-
+    @Override
     public Result search(Query query, int pages) {
         if (cache == null)
             cache = searcher.search(query, pages);

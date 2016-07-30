@@ -52,39 +52,15 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <h1>Document Analyze</h1>
-        <p>Document의 본문을 parameter에 넣거나, 기존에 저장한 Document의 IDX값을 넣어 Document를 분석할 수 있습니다. Document에서 가장 빈도수 높은 키워드, 밀집도가 높은 키워드, 감성 분석을 진행할 수 있습니다</p>
-        <p>
-          <!--
-          <a class="btn btn-primary btn-lg" href="http://localhost:8080/KoAnalyze/rest/files/documents" role="button">저장된 문서 확인하기 &raquo;</a>-->
-          <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Large Modal</button>
-
-          <!-- Modal -->
-          <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog modal-lg">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Modal Header</h4>
-                </div>
-                <div class="modal-body">
-        <p>This is a large modal.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-    </div>
-    </div>
-    </div>
-
-    </p>
+        <h1>Setence Analyze</h1>
+        <p>문장 parameter에 넣거나, 기존에 저장한 문장의 IDX값을 넣어 문장을 분석할 수 있습니다. 문장내에서의 감성 분석, 형태소 분석을 진행할 수 있습니다</p>
+        <p><a class="btn btn-primary btn-lg" href="http://localhost:8080/KoAnalyze/rest/files/documents" role="button">저장된 문서 확인하기 &raquo;</a></p>
       </div>
     </div>
 
     <div class="container">
-      <h2>Document 본문</h2>
-      <h3><%=(String)request.getAttribute("docText") %></h3>
+      <h2>Setence 본문</h2>
+      <h3><%=(String)request.getAttribute("sentenceText") %></h3>
 
       <h2>Document 핵심 키워드</h2>
       <h3>단어별 밀집도 분석과 감성 분석을 통한 Document내 주요 키워드 입니다.</h3>
@@ -101,42 +77,8 @@
       %>
       <%=keywordColumnChart.render()%>
 
-      <h2>Document내 긍정 단어 분포도</h2>
-      <h3>Document내 긍정의 의미를 가지고 있는 단어가 속한 위치입니다</h3>
-      <div id="posWordPositionChart"></div>
-      <%
-        FusionCharts posWordPositionChartChart = new FusionCharts(
-                "column2d",
-                "chart2",
-                "800",
-                "600",
-                "posWordPositionChart",
-                "json",
-                (String)request.getAttribute("posWordsPositionJSON"));
-      %>
-      <%=posWordPositionChartChart.render()%>
-
-
-      <h2>Document내 부정 단어 분포도</h2>
-      <h3>Document내 부정의 의미를 가지고 있는 단어가 속한 위치입니다</h3>
-      <div id="negWordPositionChart"></div>
-      <%
-        FusionCharts negWordPositionChart = new FusionCharts(
-                "column2d",
-                "chart3",
-                "800",
-                "600",
-                "negWordPositionChart",
-                "json",
-                (String)request.getAttribute("negWordsPositionJSON"));
-      %>
-      <%=negWordPositionChart.render()%>
-
       <h2>Document 정규화, 형태소 분석결과</h2>
       <h3>Document를 정규화 처리 한 후, 형태소 분석을 진행한 결과입니다.</h3>
-      <h2>
-
-      </h2>
       <h4><%= (String)request.getAttribute("posAnalyzed") %></h4>
 
       <footer>

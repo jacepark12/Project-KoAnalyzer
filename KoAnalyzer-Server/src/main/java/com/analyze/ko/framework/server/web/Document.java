@@ -1,4 +1,4 @@
-package com.analyze.ko.framework.server.web;
+package web;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -6,10 +6,8 @@ import java.util.regex.Pattern;
 public class Document {
     private String data;
 
-    public static Document fromString(String string) {
-        Document doc = new Document();
-        doc.data = string;
-        return doc;
+    public Document(String data) {
+        this.data = data;
     }
 
     public Document withoutTags() {
@@ -19,10 +17,11 @@ public class Document {
         StringBuffer buffer = new StringBuffer();
         while (matcher.find())
             buffer.append(matcher.group(1));
-        return fromString(buffer.toString());
+        return new Document(buffer.toString());
     }
 
-    public String raw() {
+    @Override
+    public String toString() {
         return data;
     }
 

@@ -11,11 +11,31 @@ public class EmbeddedJettyWebXmlConfigurationMain {
 
 	private static String currentDirectory = System.getProperty("user.dir");
 	private static String documentFilesDirectory = currentDirectory + "/KoAnalyzer-Server/src/main/resources/DataDocuments/";
+	private static String webdefaultDirectory = currentDirectory + "/KoAnalyzer-Server/src/main/webdefault/webdefault.xml";
+
 	public static void main(String[] args) throws Exception {
 		FileIO fileIO = FileIO.getInstance();
 		FileManager fileManager = FileManager.getInstance();
 
+		System.out.println("documentFilesDirectory : "+ documentFilesDirectory);
 		Server server = new Server(8080);
+
+		//Initialize FileManager
+		File documentFilesDir = new File(documentFilesDirectory);
+		File documentFiles[] = documentFilesDir.listFiles();
+
+		if(documentFiles != null) {
+			System.out.println("documentFiles length : " + documentFiles.length);
+			for (File documentFile : documentFiles) {
+				//System.out.println("docfiles");
+				DocumentFile docFile = new DocumentFile();
+
+				docFile.setText(fileIO.readFile(documentFile.getPath()));
+				docFile.setIdx(documentFile.getName());
+
+				fileManager.addDocumentFile(docFile);
+			}
+		}
 
 		// Handler for multiple web apps
 		HandlerCollection handlers = new HandlerCollection();
@@ -24,7 +44,7 @@ public class EmbeddedJettyWebXmlConfigurationMain {
 		WebAppContext webapp1 = new WebAppContext();
 		webapp1.setResourceBase("KoAnalyzer-Server/src/main/webapp1");
 		webapp1.setContextPath("/KoAnalyze");
-		webapp1.setDefaultsDescriptor("KoAnalyzer-Server/src/main/webdefault/webdefault.xml");
+		webapp1.setDefaultsDescriptor(webdefaultDirectory);
 
 		handlers.addHandler(webapp1);
 
@@ -32,7 +52,7 @@ public class EmbeddedJettyWebXmlConfigurationMain {
 		WebAppContext webapp2 = new WebAppContext();
 		webapp2.setResourceBase("KoAnalyzer-Server/src/main/webapp2");
 		webapp2.setContextPath("/webapp2");
-		webapp2.setDefaultsDescriptor("KoAnalyzer-Server/src/main/webdefault/webdefault.xml");
+		webapp2.setDefaultsDescriptor(webdefaultDirectory);
 		handlers.addHandler(webapp2);
 
 		// Adding the handlers to the server
@@ -43,17 +63,6 @@ public class EmbeddedJettyWebXmlConfigurationMain {
 		System.out.println("Started!");
 		server.join();
 
-		//Initialize FileManager
-		File documentFilesDir = new File(documentFilesDirectory);
-		File documentFiles[] = documentFilesDir.listFiles();
 
-		for(File documentFile : documentFiles){
-			DocumentFile docFile = new DocumentFile();
-
-			docFile.setText(fileIO.readFile(documentFile.getPath()));
-			docFile.setIdx(documentFile.getName());
-
-			fileManager.addDocumentFile(docFile);
-		}
 	}
 }

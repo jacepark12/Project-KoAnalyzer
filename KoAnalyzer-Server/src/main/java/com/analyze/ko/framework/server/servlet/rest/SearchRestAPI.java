@@ -11,7 +11,8 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /**
  * Created by parkjaesung on 2016. 7. 22..
@@ -22,7 +23,7 @@ public class SearchRestAPI {
 
     @GET
     @Produces("application/json"+ ";charset=utf-8")
-    @Path("/google/keyword={keyword}&num={num}") //save -> true or false
+    @Path("/google/keyword={keyword}") //save -> true or false
     public String startWebCrawling(@PathParam("keyword")final String keyword, @PathParam("num")final int num){
         JSONObject resultJSON = new JSONObject();
         String searchResult = "";
@@ -32,10 +33,15 @@ public class SearchRestAPI {
         resultJSON.put("keyword", keyword);
 
         for (int i = 0; urls.hasNext(); i++) {
-            String url = urls.next();
-            Page page = new Page(url);
+            URL url = urls.next();
+            Page page = null;
             try {
-                searchResult+= page.mainArticle().get("content").toString();
+                page = new Page(url);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+            try {
+                searchResult+= page.mainArticle().withoutTags().toString();
             } catch (Exception e) {
                 System.out.println(e.getMessage());
                 break;
@@ -45,7 +51,9 @@ public class SearchRestAPI {
         FileIO fileIO = FileIO.getInstance();
 
         resultJSON.put("idx" ,fileIO.savetoDoc(searchResult));
-        resultJSON.put("searchResult", resultJSON);
+        resultJSON.put("searchResult", searchResult);
+
+        System.out.println("searched result : " + searchResult);
 
         return resultJSON.toString();
     }

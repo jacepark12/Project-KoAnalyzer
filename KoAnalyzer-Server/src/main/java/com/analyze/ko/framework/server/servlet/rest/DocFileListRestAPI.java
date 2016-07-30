@@ -20,7 +20,7 @@ public class DocFileListRestAPI {
 
     @GET
     @Path("/documents")
-    @Produces("application/json")
+    @Produces("application/json"+ ";charset=utf-8")
     public String getDocFiles(){
         JSONObject resultJSON = new JSONObject();
         JSONArray docFilesJSON = new JSONArray();

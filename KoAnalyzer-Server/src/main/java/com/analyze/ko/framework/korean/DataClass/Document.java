@@ -144,9 +144,8 @@ public class Document implements SentimentTypeInterface{
         //Calculate Word's Density
         wordInfoManager.calculateWordsDensity();
 
-        //TODO 최종적으로 글에 대한 Sentiment를 설정해줘야 함
        //write csv
-        wordInfoCSVWriter.exportPositionToCSV(wordInfoManager.mapToArrayList());
+       // wordInfoCSVWriter.exportPositionToCSV(wordInfoManager.mapToArrayList());
 
     }
 

@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Client/Client.iml" filepath="$PROJECT_DIR$/Client/Client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/KoAnalyzer-APIServer/KoAnalyzer-APIServer.iml" filepath="$PROJECT_DIR$/KoAnalyzer-APIServer/KoAnalyzer-APIServer.iml" />
       <module fileurl="file://$PROJECT_DIR$/KoAnalyzer-Server/KoAnalyzer-Server.iml" filepath="$PROJECT_DIR$/KoAnalyzer-Server/KoAnalyzer-Server.iml" />
       <module fileurl="file://$PROJECT_DIR$/Kopinion-TestModule/Kopinion-TestModule.iml" filepath="$PROJECT_DIR$/Kopinion-TestModule/Kopinion-TestModule.iml" />
     </modules>

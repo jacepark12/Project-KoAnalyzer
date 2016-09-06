@@ -7,9 +7,10 @@ buildscript {
         mavenLocal()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.0.0.RC1")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.0.RELEASE")
     }
 }
+
 
 apply plugin: 'java'
 apply plugin : 'spring-boot'
@@ -19,9 +20,15 @@ sourceCompatibility = 1.5
 repositories {
     mavenCentral()
     maven { url "http://repo.spring.io/libs-snapshot" }
+    maven { url "https://repository.jboss.org/nexus/content/repositories/releases" }
 }
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web:1.0.0.RC1")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile("com.h2database:h2")
+
+    //dependency for twitter-korean-text
+    compile("com.twitter.penguin:korean-text:4.4")
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }

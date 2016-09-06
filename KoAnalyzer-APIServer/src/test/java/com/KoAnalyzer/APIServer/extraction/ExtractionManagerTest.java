@@ -1,0 +1,34 @@
+package com.KoAnalyzer.APIServer.extraction;
+
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+
+/**
+ * Created by parkjaesung on 2016. 9. 6..
+ */
+public class ExtractionManagerTest {
+
+    public static void main(String[] args){
+        String inputText = "한국어를 처리하는 예시입니다ㅋㅋ";
+        String exepectedResult = "";
+
+        ExtractionText extractionText = new ExtractionText(inputText);
+
+        ExtractionManager extractionManager = ExtractionManager.getInstance();
+        System.out.println("result : "  +extractionManager.extractText(extractionText).getPhrases() ) ;
+
+    }
+
+    @Test
+    public void testExtractText() throws Exception {
+        String inputText = "한국어를 처리하는 예시입니다ㅋㅋ";
+        String exepectedResult = "";
+
+        ExtractionText extractionText = new ExtractionText(inputText);
+
+        ExtractionManager extractionManager = ExtractionManager.getInstance();
+        System.out.println("result : "  +extractionManager.extractText(extractionText).getPhrases() ) ;
+
+    }
+}

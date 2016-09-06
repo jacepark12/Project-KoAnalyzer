@@ -1,4 +1,4 @@
-package com.KoAnalyzer.APIServer.Spring;
+package com.KoAnalyzer.APIServer;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;

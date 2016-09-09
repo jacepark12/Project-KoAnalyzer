@@ -1,6 +1,9 @@
 package com.KoAnalyzer.APIServer.extraction;
 
+import com.KoAnalyzer.APIServer.Phrase;
 import org.junit.Test;
+
+import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
@@ -18,11 +21,8 @@ public class ExtractionManagerTest {
         ExtractionManager extractionManager = ExtractionManager.getInstance();
 
         System.out.println("result : "  +extractionManager.extractText(extractionText).getPhrases() ) ;
-        System.out.println("text : "  +extractionManager.extractText(extractionText).getPhrases().get(0).text() ) ;
-        System.out.println("productPrefix : "  +extractionManager.extractText(extractionText).getPhrases().get(0).productPrefix() ) ;
-        System.out.println("length : "  +extractionManager.extractText(extractionText).getPhrases().get(0).length() ) ;
-        System.out.println("pos : "  +extractionManager.extractText(extractionText).getPhrases().get(0).pos() ) ;
-        System.out.println("offset : "  +extractionManager.extractText(extractionText).getPhrases().get(0).offset() ) ;
+
+        ArrayList<Phrase> phraseArrayList = (ArrayList<Phrase>) extractionManager.extractText(extractionText).getPhrases();
     }
 
     @Test

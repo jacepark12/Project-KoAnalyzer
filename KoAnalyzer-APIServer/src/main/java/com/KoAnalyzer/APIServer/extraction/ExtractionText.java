@@ -1,5 +1,6 @@
 package com.KoAnalyzer.APIServer.extraction;
 
+import com.KoAnalyzer.APIServer.Phrase;
 import com.twitter.penguin.korean.phrase_extractor.KoreanPhraseExtractor;
 
 import java.util.List;
@@ -11,7 +12,8 @@ import java.util.List;
 public class ExtractionText {
 
     private final String originalText;
-    private List<KoreanPhraseExtractor.KoreanPhrase> phrases;
+
+    private List<Phrase> phrases;
 
     public ExtractionText(String originalText) {
         this.originalText = originalText;
@@ -21,11 +23,11 @@ public class ExtractionText {
         return originalText;
     }
 
-    public List<KoreanPhraseExtractor.KoreanPhrase> getPhrases() {
+    public List<Phrase> getPhrases() {
         return phrases;
     }
 
-    public void setPhrases(List<KoreanPhraseExtractor.KoreanPhrase> phrases) {
+    public void setPhrases(List<Phrase> phrases) {
         this.phrases = phrases;
     }
 }

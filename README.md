@@ -1,6 +1,10 @@
 # Project-KoAnalyzer
 Korean NLP framework with Java
 
+**Alive Module : KoAnalyzer-APIServer**
+
+**Other modules will be deleted**
+
 > KoAnalyzer는 twitter-korean-text(https://github.com/twitter/twitter-korean-text)를 기반으로 하여 한국어 자연어 처리 기능을 제공합니다.
 
 > **핵심 한국어 자연어 처리 기능은 twitter-korean-text(https://github.com/twitter/twitter-korean-text)에서 개발되었습니다.**

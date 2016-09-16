@@ -27,6 +27,8 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web:1.0.0.RC1")
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
     compile("com.h2database:h2")
+    compile("commons-dbcp:commons-dbcp:1.2.2")
+    compile("mysql:mysql-connector-java:5.1.27")
 
     //dependency for twitter-korean-text
     compile("com.twitter.penguin:korean-text:4.4")

@@ -3,7 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Client/Client.iml" filepath="$PROJECT_DIR$/Client/Client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/KoAnalyzer-APIServer.iml" filepath="$PROJECT_DIR$/.idea/modules/KoAnalyzer-APIServer.iml" />
       <module fileurl="file://$PROJECT_DIR$/KoAnalyzer-APIServer/KoAnalyzer-APIServer.iml" filepath="$PROJECT_DIR$/KoAnalyzer-APIServer/KoAnalyzer-APIServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/KoAnalyzer-APIServer_main.iml" filepath="$PROJECT_DIR$/.idea/modules/KoAnalyzer-APIServer_main.iml" group="KoAnalyzer-APIServer" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/KoAnalyzer-APIServer_test.iml" filepath="$PROJECT_DIR$/.idea/modules/KoAnalyzer-APIServer_test.iml" group="KoAnalyzer-APIServer" />
       <module fileurl="file://$PROJECT_DIR$/KoAnalyzer-Server/KoAnalyzer-Server.iml" filepath="$PROJECT_DIR$/KoAnalyzer-Server/KoAnalyzer-Server.iml" />
       <module fileurl="file://$PROJECT_DIR$/Kopinion-TestModule/Kopinion-TestModule.iml" filepath="$PROJECT_DIR$/Kopinion-TestModule/Kopinion-TestModule.iml" />
     </modules>

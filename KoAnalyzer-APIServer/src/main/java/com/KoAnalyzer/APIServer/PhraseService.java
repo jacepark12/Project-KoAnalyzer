@@ -11,6 +11,7 @@ import java.util.List;
 @Service
 public interface PhraseService {
     void savePhrase(Phrase phrase);
+    void savePhrases(List<Phrase> phrases);
     List<Phrase> findAll();
     List<Phrase> findByTask();
     void deletePhrase(Phrase phrase);

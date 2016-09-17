@@ -24,6 +24,13 @@ public class PhraseImpl implements PhraseService {
         phraseRepository.save(phrase);
     }
 
+    @Override
+    public void savePhrases(List<Phrase> phrases) {
+        for (Phrase phrase: phrases) {
+            phraseRepository.save(phrase);
+        }
+    }
+
     public List<Phrase> findAll() {
 
         return phraseRepository.findAll();

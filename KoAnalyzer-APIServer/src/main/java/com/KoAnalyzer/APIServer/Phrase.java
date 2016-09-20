@@ -15,61 +15,62 @@ public class Phrase {
     @GeneratedValue
     private long id;
 
-    private String text;
-    private String pos;
-    private String task;
-    private int length;
-    private int offset;
-    private int count; //자연어 처리 결과로 사용된 횟수
+    private String phraseText;
+    private String phrasePos;
+    private String phraseTask;
+    private int phraseLength;
+    private int phraseOffset;
+
+    private int phraseCount = 0; //자연어 처리 결과로 사용된 횟수
 
     //getter & setter
 
     public String getText() {
-        return text;
+        return phraseText;
     }
 
     public void setText(String text) {
-        this.text = text;
+        this.phraseText = text;
     }
 
     public String getPos() {
-        return pos;
+        return phrasePos;
     }
 
     public void setPos(String pos) {
-        this.pos = pos;
+        this.phrasePos = pos;
     }
 
     public int getLength() {
-        return length;
+        return phraseLength;
     }
 
     public void setLength(int length) {
-        this.length = length;
+        this.phraseLength = length;
     }
 
     public int getOffset() {
-        return offset;
+        return phraseOffset;
     }
 
     public void setOffset(int offset) {
-        this.offset = offset;
+        this.phraseOffset = offset;
     }
 
     public String getTask() {
-        return task;
+        return phraseTask;
     }
 
     public void setTask(String task) {
-        this.task = task;
+        this.phraseTask = task;
     }
 
     public int getCount() {
-        return count;
+        return phraseCount;
     }
 
     public void setCount(int count) {
-        this.count = count;
+        this.phraseCount = count;
     }
 
     public long getId() {

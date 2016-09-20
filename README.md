@@ -25,6 +25,18 @@ DBpassword=
 RepoPackage=com.KoAnalyzer.APIServer
 ~~~
 
+* MySQL 설정 에제
+
+**한글 DB 저장을 위해 useUnicode=true&characterEncoding=utf8 반드시 포함**
+
+~~~
+DriverClass=com.mysql.jdbc.Driver
+DBurl=jdbc:mysql://localhost:8080/test?useUnicode=true&characterEncoding=utf8
+DBuser=test
+DBpassword=
+RepoPackage=com.KoAnalyzer.APIServer
+~~~
+
 ####한국어 정규화 Normalization
 * URL : /normalization/{text} GET
 

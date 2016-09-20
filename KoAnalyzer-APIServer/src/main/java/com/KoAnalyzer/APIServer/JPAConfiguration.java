@@ -1,7 +1,9 @@
 package com.KoAnalyzer.APIServer;
 
 import org.apache.commons.dbcp.BasicDataSource;
+import org.h2.server.web.WebServlet;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -67,5 +69,12 @@ public class JPAConfiguration {
     @Bean
     public PlatformTransactionManager transactionManager() {
         return new JpaTransactionManager();
+    }
+
+    @Bean
+    public ServletRegistrationBean h2servletRegistration() {
+        ServletRegistrationBean registration = new ServletRegistrationBean(new WebServlet());
+        registration.addUrlMappings("/console/*");
+        return registration;
     }
 }

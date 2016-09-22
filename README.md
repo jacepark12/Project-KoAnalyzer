@@ -29,6 +29,9 @@ RepoPackage=com.KoAnalyzer.APIServer
 
 **한글 DB 저장을 위해 useUnicode=true&characterEncoding=utf8 반드시 포함**
 
+**한글 저장을 위한 MYSQL설정은 다음 문서를 참고하십시요**
+[MYSQL Setup Guide](http:// "MYSQL Setup Guide")
+
 ~~~
 DriverClass=com.mysql.jdbc.Driver
 DBurl=jdbc:mysql://localhost:8080/test?useUnicode=true&characterEncoding=utf8

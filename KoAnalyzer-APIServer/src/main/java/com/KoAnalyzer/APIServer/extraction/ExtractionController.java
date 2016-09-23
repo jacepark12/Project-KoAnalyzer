@@ -1,15 +1,9 @@
 package com.KoAnalyzer.APIServer.extraction;
 
-import com.KoAnalyzer.APIServer.Phrase;
-import com.KoAnalyzer.APIServer.PhraseImpl;
 import com.KoAnalyzer.APIServer.PhraseService;
+import com.KoAnalyzer.APIServer.PostRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by parkjaesung on 2016. 9. 6..
@@ -30,9 +24,12 @@ public class ExtractionController {
         return extractionManager.extractText(extractionText);
     }
 
-    @RequestMapping(value = "/{text}", method = RequestMethod.POST)
-    public ExtractionText postExtractionText(@PathVariable("text")String originalText){
-        ExtractionText extractionText = new ExtractionText(originalText);
+    @RequestMapping(method = RequestMethod.POST,
+    consumes = "application/json")
+    public ExtractionText postExtractionText(@RequestBody PostRequest requestBody){
+        System.out.println("Request Body : "+ requestBody);
+
+        ExtractionText extractionText = new ExtractionText(requestBody.getText());
 
         ExtractionText extractedText = extractionManager.extractText(extractionText);
 

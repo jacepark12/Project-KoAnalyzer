@@ -1,5 +1,6 @@
 package com.KoAnalyzer.APIServer.extraction;
 
+import com.KoAnalyzer.APIServer.NLPManager.PhraseManagerImpl;
 import com.KoAnalyzer.APIServer.Phrase;
 import com.twitter.penguin.korean.TwitterKoreanProcessorJava;
 import com.twitter.penguin.korean.phrase_extractor.KoreanPhraseExtractor;
@@ -16,7 +17,7 @@ import java.util.List;
  * ExtractionManger works with ExtractionText class
  */
 @Service
-public class ExtractionManager {
+public class ExtractionManager extends PhraseManagerImpl {
 
     private static ExtractionManager instance = new ExtractionManager();
 
@@ -37,21 +38,5 @@ public class ExtractionManager {
         return extractionText;
     }
 
-    public List<Phrase> convertKoreanPhrase(List<KoreanPhraseExtractor.KoreanPhrase> phrases){
-        ArrayList<Phrase> converted = new ArrayList<Phrase>();
-
-        for (KoreanPhraseExtractor.KoreanPhrase phrase: phrases) {
-            Phrase convertedPhrase = new Phrase();
-
-            convertedPhrase.setText(phrase.text());
-            convertedPhrase.setPos(phrase.pos().toString());
-            convertedPhrase.setOffset(phrase.offset());
-            convertedPhrase.setLength(phrase.length());
-
-            converted.add(convertedPhrase);
-        }
-
-        return converted;
-    }
 }
 

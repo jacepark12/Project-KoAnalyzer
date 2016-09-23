@@ -1,5 +1,6 @@
 package com.KoAnalyzer.APIServer.tokenization;
 
+import com.KoAnalyzer.APIServer.NLPManager.TokenManagerImpl;
 import com.KoAnalyzer.APIServer.Phrase;
 import com.twitter.penguin.korean.TwitterKoreanProcessorJava;
 import com.twitter.penguin.korean.tokenizer.KoreanTokenizer;
@@ -14,7 +15,7 @@ import java.util.List;
  * Created by parkjaesung on 2016. 9. 10..
  */
 @Service
-public class TokenizationManger {
+public class TokenizationManger extends TokenManagerImpl{
 
     private static TokenizationManger instance = new TokenizationManger();
 
@@ -32,27 +33,6 @@ public class TokenizationManger {
         tokenizationText.setPhrases(convertTokens(tokens));
 
         return tokenizationText;
-    }
-
-    private ArrayList<Phrase> convertTokens(Seq<KoreanTokenizer.KoreanToken> tokens){
-        ArrayList<Phrase> converted = new ArrayList<Phrase>();
-
-        for(KoreanTokenizer.KoreanToken token : convertToList(tokens)){
-            Phrase convertedToken = new Phrase();
-
-            convertedToken.setText(token.text());
-            convertedToken.setPos(token.pos().toString());
-            convertedToken.setOffset(token.offset());
-            convertedToken.setLength(token.length());
-
-            converted.add(convertedToken);
-        }
-
-        return converted;
-    }
-
-    private List<KoreanTokenizer.KoreanToken> convertToList(scala.collection.Seq<KoreanTokenizer.KoreanToken> seq) {
-        return WrapAsJava$.MODULE$.seqAsJavaList(seq);
     }
 
 }

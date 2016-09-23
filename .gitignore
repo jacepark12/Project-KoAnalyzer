@@ -104,4 +104,4 @@ buildNumber.properties
 hs_err_pid*
 
 # Build Directory
-/build
+/KoAnalyzer-APIServer/build/

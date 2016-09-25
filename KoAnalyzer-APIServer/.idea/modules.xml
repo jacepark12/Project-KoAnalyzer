@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/KoAnalyzer-APIServer.iml" filepath="$PROJECT_DIR$/.idea/modules/KoAnalyzer-APIServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/KoAnalyzer-APIServer_main.iml" filepath="$PROJECT_DIR$/.idea/modules/KoAnalyzer-APIServer_main.iml" group="KoAnalyzer-APIServer" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/KoAnalyzer-APIServer_test.iml" filepath="$PROJECT_DIR$/.idea/modules/KoAnalyzer-APIServer_test.iml" group="KoAnalyzer-APIServer" />
+    </modules>
+  </component>
+</project>

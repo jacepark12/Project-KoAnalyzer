@@ -23,14 +23,16 @@ public class TokenizationController {
 
     @RequestMapping(value = "/{text}", method = RequestMethod.GET)
     public TokenizationText getTokenizedText(@PathVariable("text")String originalText){
-        TokenizationText tokenizationText = new TokenizationText(originalText);
+        TokenizationText tokenizationText = new TokenizationText(originalText, "default");
 
         return tokenizationManger.tokenizeText(tokenizationText);
     }
 
     @RequestMapping(value = "/{text}", method = RequestMethod.POST)
     public TokenizationText postTokenizedText(@PathVariable("text")String originalText){
-        TokenizationText tokenizationText = new TokenizationText(originalText);
+
+        //TODO Set task by POST Body
+        TokenizationText tokenizationText = new TokenizationText(originalText, "default");
 
         TokenizationText tokenizedText = tokenizationManger.tokenizeText(tokenizationText);
 

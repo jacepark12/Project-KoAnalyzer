@@ -20,7 +20,7 @@ public class ExtractionController {
 
     @RequestMapping(value = "/{text}", method = RequestMethod.GET)
     public ExtractionText getExtractionText(@PathVariable("text")String originalText){
-        ExtractionText extractionText = new ExtractionText(originalText);
+        ExtractionText extractionText = new ExtractionText(originalText, "default");
         return extractionManager.extractText(extractionText);
     }
 
@@ -29,7 +29,8 @@ public class ExtractionController {
     public ExtractionText postExtractionText(@RequestBody PostRequest requestBody){
         System.out.println("Request Body : "+ requestBody);
 
-        ExtractionText extractionText = new ExtractionText(requestBody.getText());
+        //TODO Set task by POST Body
+        ExtractionText extractionText = new ExtractionText(requestBody.getText(), "default");
 
         ExtractionText extractedText = extractionManager.extractText(extractionText);
 

@@ -23,14 +23,16 @@ public class StemmingController {
 
     @RequestMapping(value = "/{text}", method = RequestMethod.GET)
     public StemmingText getStemmedText(@PathVariable("text")String originalText){
-        StemmingText stemmingText = new StemmingText(originalText);
+        StemmingText stemmingText = new StemmingText(originalText, "default");
 
         return stemmingManager.stemText(stemmingText);
     }
 
     @RequestMapping(value = "/{text}", method = RequestMethod.POST)
     public StemmingText potStemmedText(@PathVariable("text")String originalText){
-        StemmingText stemmingText = new StemmingText(originalText);
+
+        //TODO Set task by POST Body
+        StemmingText stemmingText = new StemmingText(originalText, "default");
 
         StemmingText stemmedText = stemmingManager.stemText(stemmingText);
 

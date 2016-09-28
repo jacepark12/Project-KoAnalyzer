@@ -33,7 +33,7 @@ public class StemmingManager extends TokenManagerImpl {
     public StemmingText stemText(StemmingText stemmingText){
         Seq<KoreanTokenizer.KoreanToken> tokens = TwitterKoreanProcessorJava.tokenize(stemmingText.getOriginalText());
 
-        stemmingText.setPhrases(convertTokens(TwitterKoreanProcessorJava.stem(tokens)));
+        stemmingText.setPhrases(convertTokens(TwitterKoreanProcessorJava.stem(tokens), stemmingText.getTask()));
         return stemmingText;
     }
 

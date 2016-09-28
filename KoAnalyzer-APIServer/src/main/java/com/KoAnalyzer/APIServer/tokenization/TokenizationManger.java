@@ -30,7 +30,7 @@ public class TokenizationManger extends TokenManagerImpl{
     public TokenizationText tokenizeText(TokenizationText tokenizationText){
         Seq<KoreanTokenizer.KoreanToken> tokens = TwitterKoreanProcessorJava.tokenize(tokenizationText.getOriginalText());
 
-        tokenizationText.setPhrases(convertTokens(tokens));
+        tokenizationText.setPhrases(convertTokens(tokens, tokenizationText.getTask()));
 
         return tokenizationText;
     }

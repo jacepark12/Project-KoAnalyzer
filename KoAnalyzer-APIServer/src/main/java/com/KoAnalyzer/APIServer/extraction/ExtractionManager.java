@@ -33,7 +33,7 @@ public class ExtractionManager extends PhraseManagerImpl {
         Seq<KoreanTokenizer.KoreanToken> tokens = TwitterKoreanProcessorJava.tokenize(extractionText.getOriginalText());
         List<KoreanPhraseExtractor.KoreanPhrase> phrases = TwitterKoreanProcessorJava.extractPhrases(tokens, true, true);
 
-        extractionText.setPhrases(convertKoreanPhrase(phrases));
+        extractionText.setPhrases(convertKoreanPhrase(phrases, extractionText.getTask()));
 
         return extractionText;
     }

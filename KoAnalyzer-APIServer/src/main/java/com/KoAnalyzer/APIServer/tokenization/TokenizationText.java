@@ -10,10 +10,12 @@ import java.util.List;
 public class TokenizationText {
 
     private final String originalText;
+    private final String task;
     private List<Phrase> phrases;
 
-    public TokenizationText(String originalText) {
+    public TokenizationText(String originalText, String task) {
         this.originalText = originalText;
+        this.task = task;
     }
 
     public String getOriginalText(){
@@ -26,5 +28,9 @@ public class TokenizationText {
 
     public void setPhrases(List<Phrase> phrases) {
         this.phrases = phrases;
+    }
+
+    public String getTask() {
+        return task;
     }
 }

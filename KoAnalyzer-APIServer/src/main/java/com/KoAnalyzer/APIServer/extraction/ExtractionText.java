@@ -12,11 +12,12 @@ import java.util.List;
 public class ExtractionText {
 
     private final String originalText;
-
+    private final String task;
     private List<Phrase> phrases;
 
-    public ExtractionText(String originalText) {
+    public ExtractionText(String originalText, String task) {
         this.originalText = originalText;
+        this.task = task;
     }
 
     public String getOriginalText() {
@@ -30,4 +31,9 @@ public class ExtractionText {
     public void setPhrases(List<Phrase> phrases) {
         this.phrases = phrases;
     }
+
+    public String getTask() {
+        return task;
+    }
 }
+

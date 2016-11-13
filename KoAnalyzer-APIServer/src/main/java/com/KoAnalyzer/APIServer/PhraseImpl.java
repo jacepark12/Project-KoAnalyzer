@@ -1,7 +1,5 @@
 package com.KoAnalyzer.APIServer;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -15,6 +13,10 @@ public class PhraseImpl implements PhraseService {
 
     @Resource
     PhraseRepository phraseRepository;
+
+    public PhraseImpl(){
+
+    }
 
     public void savePhrase(Phrase phrase) {
         //TODO 일단은 그냥 저장

@@ -1,16 +1,16 @@
 package com.KoAnalyzer.APIServer;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * Created by parkjaesung on 2016. 9. 6..
  */
-@RestController
+@Controller
 public class HelloController {
 
-    @RequestMapping("/hello")
+    @GetMapping("/")
     public String test(){
-        return "hello";
+        return "index";
     }
 }

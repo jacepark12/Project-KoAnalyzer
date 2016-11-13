@@ -5,8 +5,6 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by parkjaesung on 2016. 9. 6..
  */
@@ -16,7 +14,7 @@ public class ExtractionManagerTest {
         String inputText = "한국어를 처리하는 예시입니다ㅋㅋ";
         String exepectedResult = "";
 
-        ExtractionText extractionText = new ExtractionText(inputText);
+        ExtractionText extractionText = new ExtractionText(inputText, "Task");
 
         ExtractionManager extractionManager = ExtractionManager.getInstance();
 
@@ -30,7 +28,7 @@ public class ExtractionManagerTest {
         String inputText = "한국어를 처리하는 예시입니다ㅋㅋ";
         String exepectedResult = "";
 
-        ExtractionText extractionText = new ExtractionText(inputText);
+        ExtractionText extractionText = new ExtractionText(inputText, "Task");
 
         ExtractionManager extractionManager = ExtractionManager.getInstance();
         System.out.println("result : "  +extractionManager.extractText(extractionText).getPhrases() ) ;

@@ -1,14 +1,16 @@
 package com.KoAnalyzer.APIServer;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by parkjaesung on 2016. 9. 9..
  * Phrase class is used for Stemming, Extraction
  */
 @Entity
+@Table(name = "Phrase")
+@NamedQueries({
+        @NamedQuery(name="Phrase.findByTask", query="select p from Phrase p where p.phraseTask = ?1")
+})
 public class Phrase {
 
     @Id

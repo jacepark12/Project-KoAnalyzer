@@ -5,8 +5,6 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by parkjaesung on 2016. 9. 9..
  */
@@ -15,7 +13,7 @@ public class StemmingManagerTest {
     public static void main(String[] args){
         StemmingManager stemmingManager = StemmingManager.getInstance();
 
-        StemmingText stemmingText = new StemmingText("이것이 예시입니닼ㅋ");
+        StemmingText stemmingText = new StemmingText("이것이 예시입니닼ㅋ", "task");
         ArrayList<Phrase> stemmed = (ArrayList<Phrase>) stemmingManager.stemText(stemmingText).getPhrases();
     }
 
